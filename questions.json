@@ -143,6 +143,46 @@
         {
           "q": "What is a 'Unicorn' (business term)?",
           "a": "A privately held startup valued at over $1 billion"
+        },
+        {
+          "q": "What does ESG stand for in modern corporate governance and investing?",
+          "a": "Environmental, Social, and Governance"
+        },
+        {
+          "q": "What does SWOT analysis stand for in strategic planning?",
+          "a": "Strengths, Weaknesses, Opportunities, and Threats"
+        },
+        {
+          "q": "What does PESTLE stand for in macro-environmental analysis?",
+          "a": "Political, Economic, Social, Technological, Legal, and Environmental"
+        },
+        {
+          "q": "What does SaaS stand for in cloud business models?",
+          "a": "Software as a Service"
+        },
+        {
+          "q": "What does MoM stand for in financial performance comparisons?",
+          "a": "Month over Month"
+        },
+        {
+          "q": "What does ARR stand for in subscription business metrics?",
+          "a": "Annual Recurring Revenue"
+        },
+        {
+          "q": "What does MRR stand for in subscription revenue tracking?",
+          "a": "Monthly Recurring Revenue"
+        },
+        {
+          "q": "What does CTR stand for in digital marketing and online advertising?",
+          "a": "Click-Through Rate"
+        },
+        {
+          "q": "What does D2C stand for in modern retail and e-commerce distribution?",
+          "a": "Direct to Consumer"
+        },
+        {
+          "q": "What does KYC stand for in banking compliance and customer onboarding?",
+          "a": "Know Your Customer"
         }
       ]
     },
@@ -249,6 +289,46 @@
         {
           "q": "In the BCG Matrix, what are high-growth, low-share units (needing investment decisions) called?",
           "a": "Question Marks"
+        },
+        {
+          "q": "What term describes dividing a broad consumer market into distinct sub-groups based on shared needs or traits?",
+          "a": "Market Segmentation"
+        },
+        {
+          "q": "What are the 3 additional Ps in the extended 7Ps marketing mix for service industries?",
+          "a": "People, Process, and Physical Evidence"
+        },
+        {
+          "q": "In the BCG Growth-Share Matrix, what is the term for a product with low market growth but high market share?",
+          "a": "Cash Cow"
+        },
+        {
+          "q": "In the BCG Growth-Share Matrix, what is the term for a product with high market growth and high market share?",
+          "a": "Star"
+        },
+        {
+          "q": "What pricing strategy involves launching a product at a high introductory price and gradually lowering it over time?",
+          "a": "Price Skimming"
+        },
+        {
+          "q": "What pricing strategy involves setting a very low introductory price to rapidly penetrate the market and build market share?",
+          "a": "Penetration Pricing"
+        },
+        {
+          "q": "What psychological marketing concept represents the commercial value derived from consumer perception of a brand name?",
+          "a": "Brand Equity"
+        },
+        {
+          "q": "What metric estimates the total revenue a business can generate from a single customer throughout their relationship?",
+          "a": "Customer Lifetime Value (CLV / LTV)"
+        },
+        {
+          "q": "What classic consumer journey framework models the stages: Attention, Interest, Desire, and Action?",
+          "a": "AIDA Model"
+        },
+        {
+          "q": "What is the practice of developing and promoting products based on their environmental or sustainable benefits called?",
+          "a": "Green Marketing"
         }
       ]
     },
@@ -355,6 +435,46 @@
         {
           "q": "What are the two major Indian stock exchanges?",
           "a": "BSE and NSE"
+        },
+        {
+          "q": "What is the residual interest in the assets of an enterprise after deducting all its liabilities called?",
+          "a": "Shareholders' Equity (or Net Worth)"
+        },
+        {
+          "q": "What is an unsecured, short-term debt instrument issued by corporations to finance immediate working capital needs?",
+          "a": "Commercial Paper (CP)"
+        },
+        {
+          "q": "What financial ratio measures a company's financial leverage by comparing its total debt to total shareholders' equity?",
+          "a": "Debt-to-Equity Ratio"
+        },
+        {
+          "q": "What is the price a market maker or buyer is willing to pay for a financial security called?",
+          "a": "Bid Price"
+        },
+        {
+          "q": "What is the price at which a seller is willing to sell a financial security called?",
+          "a": "Ask Price (or Offer Price)"
+        },
+        {
+          "q": "What is the numerical difference between the Bid and Ask prices in financial markets called?",
+          "a": "Bid-Ask Spread"
+        },
+        {
+          "q": "What form of private equity financing provides capital to high-growth, early-stage startups in exchange for equity?",
+          "a": "Venture Capital (VC)"
+        },
+        {
+          "q": "What is the minimum capital reserve percentage required by the RBI for commercial banks called?",
+          "a": "Capital Adequacy Ratio (CAR)"
+        },
+        {
+          "q": "What is a loan where the borrower pledges an asset like property, machinery, or gold as collateral called?",
+          "a": "Secured Loan"
+        },
+        {
+          "q": "What financial contract gives the buyer the right, but not the obligation, to buy an underlying asset at a specified price within a timeframe?",
+          "a": "Call Option"
         }
       ]
     },
@@ -469,6 +589,38 @@
         {
           "q": "Which company did Sam Walton found?",
           "a": "Walmart"
+        },
+        {
+          "q": "Who founded Walmart in 1962, which grew into the world's largest company by revenue?",
+          "a": "Sam Walton"
+        },
+        {
+          "q": "Who founded Alibaba Group in 1999, creating China's foremost e-commerce and cloud conglomerate?",
+          "a": "Jack Ma"
+        },
+        {
+          "q": "Who founded Spotify in 2006, pioneering the modern streaming music subscription model?",
+          "a": "Daniel Ek and Martin Lorentzon"
+        },
+        {
+          "q": "Who founded Airbnb in 2008, revolutionizing the global peer-to-peer lodging and vacation rental industry?",
+          "a": "Brian Chesky, Joe Gebbia, and Nathan Blecharczyk"
+        },
+        {
+          "q": "Which major Indian conglomerate owns prestigious brands like Titan, Tanishq, Fastrack, and Air India?",
+          "a": "Tata Group"
+        },
+        {
+          "q": "Who founded Asian Paints in 1942, now India's largest decorative coatings enterprise?",
+          "a": "Champaklal Choksey, Chimanlal Choksi, Suryakant Dani, and Arvind Vakil"
+        },
+        {
+          "q": "Who founded the Adani Group in 1988 starting as a commodity trading business in Gujarat?",
+          "a": "Gautam Adani"
+        },
+        {
+          "q": "Which AI research organization founded in 2015 developed and launched ChatGPT?",
+          "a": "OpenAI"
         }
       ]
     },
@@ -555,6 +707,46 @@
         {
           "q": "Which car company's logo is a three-pointed star?",
           "a": "Mercedes-Benz"
+        },
+        {
+          "q": "What is the famous global brand tagline of L'Oréal cosmetics?",
+          "a": "Because You're Worth It"
+        },
+        {
+          "q": "What is the long-standing advertising slogan of Red Bull energy drink?",
+          "a": "Red Bull Gives You Wings"
+        },
+        {
+          "q": "What is the famous promotional slogan of KFC (Kentucky Fried Chicken)?",
+          "a": "Finger Lickin' Good"
+        },
+        {
+          "q": "What is the classic brand promise tagline of FedEx express shipping?",
+          "a": "When it absolutely, positively has to be there overnight"
+        },
+        {
+          "q": "What is the iconic corporate brand campaign slogan of Intel microprocessors?",
+          "a": "Intel Inside"
+        },
+        {
+          "q": "What is the community-oriented tagline of Airbnb?",
+          "a": "Belong Anywhere"
+        },
+        {
+          "q": "What is the famous tagline of Mastercard credit cards?",
+          "a": "There are some things money can't buy. For everything else, there's Mastercard"
+        },
+        {
+          "q": "What is the emotional Indian advertising tagline of Asian Paints?",
+          "a": "Har Ghar Kuch Kehta Hai"
+        },
+        {
+          "q": "What is the brand tagline of Hyundai Motor Company?",
+          "a": "New Thinking, New Possibilities"
+        },
+        {
+          "q": "What is the fresh-eating tagline of Subway sandwich restaurants?",
+          "a": "Eat Fresh"
         }
       ]
     },
@@ -645,6 +837,42 @@
         {
           "q": "Who proposed 'Theory X and Theory Y' of employee motivation?",
           "a": "Douglas McGregor"
+        },
+        {
+          "q": "Who authored the globally bestselling business leadership book \"The 7 Habits of Highly Effective People\"?",
+          "a": "Stephen R. Covey"
+        },
+        {
+          "q": "Who formulated the Contingency Theory of Leadership, proposing that group performance depends on leadership style matching situational control?",
+          "a": "Fred Fiedler"
+        },
+        {
+          "q": "Who popularized the economic concept of \"Creative Destruction\" to explain innovation-driven market transformations?",
+          "a": "Joseph Schumpeter"
+        },
+        {
+          "q": "Who founded the Virgin Group spanning airlines, music, and telecommunications, famous for charismatic entrepreneurial leadership?",
+          "a": "Sir Richard Branson"
+        },
+        {
+          "q": "Who served as Warren Buffett's legendary investment partner and Vice Chairman of Berkshire Hathaway?",
+          "a": "Charlie Munger"
+        },
+        {
+          "q": "Who developed the Managerial Grid Model assessing leadership styles based on Concern for Production vs Concern for People?",
+          "a": "Robert R. Blake and Jane S. Mouton"
+        },
+        {
+          "q": "Who co-authored the groundbreaking strategic management book \"Blue Ocean Strategy\"?",
+          "a": "W. Chan Kim and Renée Mauborgne"
+        },
+        {
+          "q": "Who served as the transformative Chairman and CEO of PepsiCo from 2006 to 2018?",
+          "a": "Indra Nooyi"
+        },
+        {
+          "q": "Who developed the Acquired Needs Theory emphasizing Achievement, Affiliation, and Power motivators?",
+          "a": "David McClelland"
         }
       ]
     },
@@ -715,6 +943,42 @@
         {
           "q": "What is 'Kaizen'?",
           "a": "A Japanese philosophy meaning 'continuous improvement'"
+        },
+        {
+          "q": "What management process involves comparing an organization's business practices and metrics against industry bests?",
+          "a": "Benchmarking"
+        },
+        {
+          "q": "What organizational strategy systematically disperses decision-making authority away from central leadership to local units?",
+          "a": "Decentralization"
+        },
+        {
+          "q": "What visual horizontal bar chart developed in the 1910s is used worldwide for project scheduling and task timelines?",
+          "a": "Gantt Chart"
+        },
+        {
+          "q": "What Japanese operational philosophy focuses on continuous, incremental improvements across all workplace processes?",
+          "a": "Kaizen"
+        },
+        {
+          "q": "What strategic management performance tool tracks Financial, Customer, Internal Process, and Learning/Growth metrics?",
+          "a": "Balanced Scorecard (BSC)"
+        },
+        {
+          "q": "What visual workflow scheduling framework originated at Toyota to manage production capacity and eliminate bottlenecks?",
+          "a": "Kanban"
+        },
+        {
+          "q": "What cognitive bias causes decision-makers to persist in an unprofitable venture because of irrecoverable past expenditures?",
+          "a": "Sunk Cost Fallacy"
+        },
+        {
+          "q": "What strategic human resource process prepares internal employees to seamlessly step into critical corporate leadership roles?",
+          "a": "Succession Planning"
+        },
+        {
+          "q": "What legal instrument grants an inventor exclusive commercial monopoly rights over an invention for a fixed statutory period?",
+          "a": "Patent"
         }
       ]
     },
@@ -805,6 +1069,42 @@
         {
           "q": "What is UPI, India's digital payments backbone?",
           "a": "Unified Payments Interface, developed by NPCI"
+        },
+        {
+          "q": "What is the statutory regulatory body governing the insurance sector in India?",
+          "a": "IRDAI (Insurance Regulatory and Development Authority of India)"
+        },
+        {
+          "q": "What is the statutory body regulating the telecommunications industry and tariffs in India?",
+          "a": "TRAI (Telecom Regulatory Authority of India)"
+        },
+        {
+          "q": "Which dynamic metropolis in Karnataka is internationally celebrated as the \"Silicon Valley of India\"?",
+          "a": "Bengaluru (Bangalore)"
+        },
+        {
+          "q": "What dedicated online marketplace was established by the Government of India for transparent public procurement?",
+          "a": "GeM (Government e-Marketplace)"
+        },
+        {
+          "q": "Which bustling port city in Gujarat is renowned globally as the \"Diamond City of India\" and a major commercial textile hub?",
+          "a": "Surat"
+        },
+        {
+          "q": "What statutory regulatory authority enforces competition law and prevents anti-competitive monopolies in India?",
+          "a": "CCI (Competition Commission of India)"
+        },
+        {
+          "q": "What flagship mission launched in 2016 aims to foster innovation, funding, and incubation for new enterprises in India?",
+          "a": "Startup India"
+        },
+        {
+          "q": "What instant real-time payment architecture built by NPCI powers India's mobile cashless transaction boom?",
+          "a": "UPI (Unified Payments Interface)"
+        },
+        {
+          "q": "Which Indian IT services titan became the first Indian company to list its equity on the American NASDAQ stock market in 1999?",
+          "a": "Infosys"
         }
       ]
     },
@@ -871,6 +1171,46 @@
         {
           "q": "What organization tracks and reports global trade and tariff rules?",
           "a": "WTO (World Trade Organization)"
+        },
+        {
+          "q": "What economic term describes a persistent and broad rise in the general price level of goods and services over time?",
+          "a": "Inflation"
+        },
+        {
+          "q": "What economic term describes a sustained decline in the general price level across an economy?",
+          "a": "Deflation"
+        },
+        {
+          "q": "What broad indicator measures the total monetary value of all finished goods and services produced within a country in a given year?",
+          "a": "Gross Domestic Product (GDP)"
+        },
+        {
+          "q": "What inflation-adjusted macroeconomic measure reflects the true physical output volume of an economy?",
+          "a": "Real GDP"
+        },
+        {
+          "q": "What toxic macroeconomic condition combines stagnant economic growth, high unemployment, and high inflation?",
+          "a": "Stagflation"
+        },
+        {
+          "q": "What modern trilateral free trade pact replaced NAFTA between the United States, Mexico, and Canada?",
+          "a": "USMCA"
+        },
+        {
+          "q": "What international reserve asset was created by the International Monetary Fund in 1969 to supplement member reserves?",
+          "a": "Special Drawing Rights (SDR)"
+        },
+        {
+          "q": "What statistical coefficient between 0 and 1 measures income and wealth inequality in an economy?",
+          "a": "Gini Coefficient"
+        },
+        {
+          "q": "What duty or tax imposed on imported goods serves to generate government revenue and protect domestic manufacturing?",
+          "a": "Tariff (or Import Duty)"
+        },
+        {
+          "q": "What is the net monetary difference between a country's total exports and imports of goods over a given period?",
+          "a": "Balance of Trade"
         }
       ]
     },
@@ -957,6 +1297,26 @@
         {
           "q": "What is 'Capital Expenditure (CapEx)'?",
           "a": "Money spent on acquiring or upgrading long-term physical assets"
+        },
+        {
+          "q": "What accounting method records financial transactions when revenues are earned and expenses incurred, regardless of cash timing?",
+          "a": "Accrual Accounting"
+        },
+        {
+          "q": "What financial statement summarizes a company's revenues, cost of sales, operating expenses, and net profit over a reporting period?",
+          "a": "Income Statement (or Profit & Loss Statement)"
+        },
+        {
+          "q": "What is the systematic write-off of the cost of an intangible asset over its estimated useful economic life called?",
+          "a": "Amortization"
+        },
+        {
+          "q": "What accounting term denotes short-term obligations owed by an enterprise to suppliers for purchases bought on credit?",
+          "a": "Accounts Payable (AP)"
+        },
+        {
+          "q": "What core accounting assumption presumes an enterprise will remain operational and solvent indefinitely without intent of liquidation?",
+          "a": "Going Concern Concept"
         }
       ]
     },
@@ -1023,6 +1383,46 @@
         {
           "q": "What is 'customer lifetime value (CLV)'?",
           "a": "The total revenue a business can expect from a single customer over their relationship"
+        },
+        {
+          "q": "What digital business model offers core features free of charge while charging subscription fees for advanced capabilities?",
+          "a": "Freemium Model"
+        },
+        {
+          "q": "What corporate growth strategy involves acquiring or merging with a direct industry rival at the same stage of the supply chain?",
+          "a": "Horizontal Integration"
+        },
+        {
+          "q": "What commercial agreement allows an entrepreneur to operate using a franchisor's proprietary brand, system, and trademark?",
+          "a": "Franchising"
+        },
+        {
+          "q": "What startup methodology relies strictly on personal savings and cash flow generated from early sales without outside equity funding?",
+          "a": "Bootstrapping"
+        },
+        {
+          "q": "What legal principle ensures company shareholders cannot be held personally responsible for company losses beyond their invested capital?",
+          "a": "Limited Liability"
+        },
+        {
+          "q": "In Michael Porter's competitive strategies, what approach targets becoming the lowest-cost producer across the entire industry?",
+          "a": "Cost Leadership"
+        },
+        {
+          "q": "What corporate practice involves delegating specific non-core operational functions to specialized third-party vendors?",
+          "a": "Outsourcing (BPO)"
+        },
+        {
+          "q": "What recurring revenue model bills clients at set regular intervals for ongoing access to a product or service library?",
+          "a": "Subscription Model"
+        },
+        {
+          "q": "What diversification strategy expands a corporation into entirely unrelated industries to spread market risk?",
+          "a": "Conglomerate Diversification"
+        },
+        {
+          "q": "What parent corporate entity exists primarily to hold controlling shares in subsidiary operating companies rather than producing goods directly?",
+          "a": "Holding Company"
         }
       ]
     },
@@ -1069,6 +1469,46 @@
         {
           "q": "A company invests ₹10,00,000 and earns a net profit of ₹2,50,000 in a year. What is its Return on Investment (ROI)?",
           "a": "ROI = Net Profit / Investment × 100 = 2,50,000 / 10,00,000 × 100 = 25%"
+        },
+        {
+          "q": "If a product sells for ₹500 and its total production cost is ₹350, what is the gross profit margin percentage?",
+          "a": "30%"
+        },
+        {
+          "q": "If total fixed costs are ₹60,000, price per unit is ₹100, and variable cost per unit is ₹40, how many units must be sold to break even?",
+          "a": "1,000 units"
+        },
+        {
+          "q": "If an initial capital investment of ₹10,000 yields ₹14,000 in net value after one year, what is the Return on Investment (ROI)?",
+          "a": "40%"
+        },
+        {
+          "q": "If a business generates ₹1,000,000 in gross revenue and achieves ₹150,000 in net profit after tax, what is its net profit margin?",
+          "a": "15%"
+        },
+        {
+          "q": "If current assets are ₹200,000 and current liabilities are ₹100,000, what is the firm's current ratio?",
+          "a": "2.0 (or 2:1)"
+        },
+        {
+          "q": "If a company reports Earnings Per Share (EPS) of ₹10 and its shares trade in the market at ₹150, what is its Price-to-Earnings (P/E) ratio?",
+          "a": "15"
+        },
+        {
+          "q": "If a retailer purchases merchandise for ₹800 and applies a standard 25% markup on cost, what is the retail selling price?",
+          "a": "₹1,000"
+        },
+        {
+          "q": "If an investment doubles from ₹50,000 to ₹100,000 over 6 years, what is the approximate annual compound return by the Rule of 72?",
+          "a": "12% per year"
+        },
+        {
+          "q": "If a wholesaler offers a 10% trade discount on an order billed at ₹50,000 list price, what is the net invoice amount payable?",
+          "a": "₹45,000"
+        },
+        {
+          "q": "If a consulting firm generates ₹400,000 in annual fee income with a team of 4 consultants, what is the revenue per employee?",
+          "a": "₹100,000"
         }
       ]
     }

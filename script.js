@@ -2,6 +2,7 @@
  * BELL RINGER — BBA Business Quiz Practice System
  * Financial Newspaper & Ticker Tape Edition
  * Supports Flashcard (Reveal) and 4-Option MCQ (Kahoot-Style) modes.
+ * Curated & Engineered by Ved Mangukiya · BBA Student, Surat, Gujarat
  */
 
 (function () {
@@ -10,6 +11,7 @@
   // --- State & Constants ---
   const STORAGE_KEY_STATS = "bellringer_quiz_stats_v1";
   const STORAGE_KEY_THEME = "bellringer_theme_v1";
+  const TICKER_PIXELS_PER_SECOND = 42; // Constant comfortable reading velocity across all pages
 
   let DATA = null;
   let pool = [];
@@ -104,7 +106,7 @@
       }
 
       buildCategoryControls(totalQuestions);
-      buildTicker();
+      buildTicker(totalQuestions);
     } catch (err) {
       console.error("Failed to load questions data:", err);
       const totalBadge = el("total-pool-count");
@@ -136,7 +138,7 @@
     allChip.setAttribute("aria-checked", "true");
     allChip.innerHTML = `
       <span class="chip-title">All Boards <span class="chip-count">${totalQuestions}</span></span>
-      <span class="chip-sub">Full syllabus drill (250 Qs)</span>
+      <span class="chip-sub">Full syllabus drill (${totalQuestions} Qs)</span>
     `;
     chipsContainer.appendChild(allChip);
 
@@ -213,18 +215,32 @@
     return map[id] || "Subject Drill";
   }
 
-  function buildTicker() {
+  function buildTicker(totalQuestions = 360) {
     const ticker = el("ticker");
     if (!ticker || !DATA || !DATA.categories) return;
 
-    const parts = DATA.categories.map((cat, i) => {
+    const headlineItems = [
+      `<span><span class="ticker-tag">CURATOR</span> <strong>VED MANGUKIYA</strong> <span class="up">▲ SURAT</span></span>`,
+      `<span><span class="ticker-tag">EVENT</span> <strong>AMROLI COLLEGE QUIZ</strong> <span class="up">▲ SSASIT TEAM</span></span>`,
+      `<span><span class="ticker-tag">SYLLABUS</span> <strong>${totalQuestions} QUESTIONS</strong> <span class="up">▲ ${DATA.categories.length} BOARDS</span></span>`
+    ];
+
+    const categoryItems = DATA.categories.map((cat, i) => {
       const dir = i % 2 === 0 ? "up" : "down";
       const arrow = dir === "up" ? "▲" : "▼";
       return `<span><strong>${cat.name.toUpperCase()}</strong> <span class="${dir}">${arrow} ${cat.questions.length} Qs</span></span>`;
     });
 
-    // Double content for infinite seamless ticker scroll
-    ticker.innerHTML = parts.join("") + parts.join("");
+    const fullSequence = [...headlineItems, ...categoryItems].join("");
+    // Double content for continuous infinite seamless marquee
+    ticker.innerHTML = fullSequence + fullSequence;
+
+    // Calculate exact animation duration dynamically based on constant pixel velocity (42px/s)
+    requestAnimationFrame(() => {
+      const singleCycleWidth = ticker.scrollWidth / 2;
+      const durationSeconds = Math.round(singleCycleWidth / TICKER_PIXELS_PER_SECOND);
+      ticker.style.animationDuration = `${durationSeconds}s`;
+    });
   }
 
   // --- Mode & Format Chip Controls ---

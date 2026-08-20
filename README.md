@@ -1,73 +1,52 @@
-# Bell Ringer — BBA Business Quiz Trainer
+# Bell Ringer — Business Quiz Trainer (Financial Edition)
 
-A tiny, static, no-build website for practicing business-quiz questions ahead of
-the SSASIT vs Amroli inter-college BBA quiz. Pure HTML/CSS/JS — no frameworks,
-no backend, works straight off GitHub Pages.
+A high-performance, mobile-first business quiz practice arena engineered for **SSASIT** students participating in the **Amroli College Inter-College Business Quiz Competition**.
 
-## What it does
+Curated and built by **Ved Mangukiya** (BBA Student, Surat, Gujarat).
 
-- Loads questions from `questions.json`, grouped into "boards" (categories:
-  Business Terms, Marketing, Finance, Founders, Taglines, GDP/Economy,
-  Accounting, Numerical problems, etc.)
-- **Flashcard mode**: question → reveal answer → mark yourself right/wrong
-- **Shuffled drill mode**: same thing, but questions are randomized each run
-- Live scoreboard tracks correct/missed as you go
-- End-of-session summary with your % score
+---
 
-## Run it locally
+## 🌟 Key Features
 
-No install needed. Just open `index.html` in a browser, or serve it locally:
+1. **360 Curated Master Questions (Zero Duplicates)**:
+   - **Board 01: Business Terms & Abbreviations** (45 Questions)
+   - **Board 02: Marketing Concepts & Frameworks** (35 Questions)
+   - **Board 03: Finance, Banking & Markets** (35 Questions)
+   - **Board 04: Company Founders & Origins** (35 Questions)
+   - **Board 05: Brand Taglines & Slogans** (30 Questions)
+   - **Board 06: Business Leaders & Management Theorists** (30 Questions)
+   - **Board 07: Management Principles & Operations** (25 Questions)
+   - **Board 08: Indian Economy & Business Ecosystem** (30 Questions)
+   - **Board 09: World Economy, GDP & International Trade** (25 Questions)
+   - **Board 10: Accounting Fundamentals & Statements** (25 Questions)
+   - **Board 11: How Business Works & Applied Strategy** (25 Questions)
+   - **Board 12: Numerical Problem-Solving & Business Math** (20 Questions)
+
+2. **Dual Quiz Format Engine**:
+   - **🎯 4-Option MCQ Mode (Kahoot-Style)**: Dynamically generates 4 distinct multiple-choice options (1 correct answer + 3 plausible distractors from the board). Awards +1 point for correct clicks with immediate feedback; wrong selections highlight the correct answer and register into the missed pool. Keyboard shortcuts: `1`-`4` or `A`-`D`.
+   - **🎴 Flashcard Mode**: Flip-to-reveal self-check with swipe gestures and space/arrow key shortcuts.
+
+3. **Synchronized Constant-Velocity Ticker Tape**:
+   - Financial market marquee scrolling at an identical, comfortable reading speed (`42px/s`) across all pages with pause-on-hover and edge fade masks.
+
+4. **Dedicated Developer Dossier (`developer.html`)**:
+   - Creator profile for **Ved Mangukiya**, event context (Amroli College organizing, SSASIT participating), and syllabus matrix overview.
+
+5. **Local Performance Radar**:
+   - Automatically tracks accuracy across all 12 boards in `localStorage` without external telemetry. Flags boards below 75% accuracy for focused drills and provides instant "Review Missed Questions" capability.
+
+---
+
+## 🚀 Running Locally
+
+You can run the project using any local web server:
 
 ```bash
-python3 -m http.server 8000
-# then visit http://localhost:8000
+# Using Python
+python -m http.server 8000
+
+# Using Node.js npx
+npx serve .
 ```
 
-(Opening `index.html` directly via `file://` also works in most browsers,
-but a local server avoids any fetch/CORS quirks with `questions.json`.)
-
-## Deploy to GitHub Pages (free hosting)
-
-1. Push this repo to GitHub (see commands below).
-2. Go to your repo → **Settings → Pages**.
-3. Under "Build and deployment", set **Source: Deploy from a branch**,
-   branch: `main`, folder: `/ (root)`.
-4. Save. GitHub gives you a live URL like:
-   `https://<your-username>.github.io/bba-quiz-practice/`
-5. Wait ~1 minute, then visit that URL — it's live and practice-ready.
-
-## Add or edit questions
-
-Everything lives in `questions.json`. Each category looks like:
-
-```json
-{
-  "id": "finance",
-  "name": "Finance & Economics",
-  "questions": [
-    { "q": "What is 'liquidity'?", "a": "The ease with which an asset can be converted to cash" }
-  ]
-}
-```
-
-Add a new question by adding another `{ "q": "...", "a": "..." }` object to
-any category's `questions` array — or add a whole new category object to
-the top-level `categories` array. No code changes needed; the site reads the
-file at runtime.
-
-## Project structure
-
-```
-bba-quiz-practice/
-├── index.html       # page structure
-├── style.css         # ticker/newspaper-inspired theme
-├── script.js         # quiz logic (fetch, shuffle, scoring)
-├── questions.json    # all quiz content — edit this to add rounds
-└── README.md
-```
-
-## Roadmap ideas (optional, for later)
-
-- Add a countdown timer per question to simulate real quiz pressure
-- Track weak categories across sessions using `localStorage`
-- Add a "rapid fire" mode with a fixed time limit per question
+Open `http://localhost:8000` in your browser.
