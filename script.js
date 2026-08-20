@@ -200,21 +200,21 @@
     const map = {
       terms: "Acronyms & Jargon",
       marketing: "4Ps, STP, BCG Matrix",
-      finance: "Markets, Capital & RBI",
+      finance: "Markets, Capital & Banking",
       companies: "Founders & Origins",
       taglines: "Brand Slogans & Logos",
-      leaders: "Management Theorists",
+      leaders: "Theorists & Executives",
       management: "Org Principles & Ops",
-      india: "Domestic Economy & UPI",
+      india: "Policy, NITI & Banking",
       gdp: "Global Macro & Trade",
       accounting: "Statements & Entries",
-      howbusiness: "Integration & Scales",
-      numerical: "CAGR, P/E & Breakeven",
+      howbusiness: "Integration & Strategy",
+      bizgk: "M&A, Tech & Milestones",
     };
     return map[id] || "Subject Drill";
   }
 
-  function buildTicker(totalQuestions = 360) {
+  function buildTicker(totalQuestions = 420) {
     const ticker = el("ticker");
     if (!ticker || !DATA || !DATA.categories) return;
 
@@ -397,9 +397,12 @@
     }
   }
 
+  const STORAGE_KEY_SHUFFLE_CYCLE = "bellringer_shuffle_cycle_v1";
+
   function clearAllStats() {
-    if (confirm("Are you sure you want to reset all saved session stats and weak category history?")) {
+    if (confirm("Are you sure you want to reset all saved session stats, weak category history, and shuffle queue?")) {
       localStorage.removeItem(STORAGE_KEY_STATS);
+      localStorage.removeItem(STORAGE_KEY_SHUFFLE_CYCLE);
       renderWeakCategories();
       updateLifetimeStatsSummary();
     }
@@ -413,6 +416,50 @@
       [a[i], a[j]] = [a[j], a[i]];
     }
     return a;
+  }
+
+  // Non-repeating shuffle queue manager across sessions
+  function getShuffleQueue(categoryId, fullList) {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY_SHUFFLE_CYCLE);
+      const allQueues = stored ? JSON.parse(stored) : {};
+      const queue = allQueues[categoryId];
+
+      if (Array.isArray(queue) && queue.length > 0) {
+        // Map stored question keys back to fullList items
+        const validItems = queue
+          .map((storedItem) => fullList.find((item) => item.q === storedItem.q))
+          .filter(Boolean);
+
+        if (validItems.length > 0) {
+          return validItems;
+        }
+      }
+    } catch (e) {
+      console.warn("Could not read shuffle queue from localStorage", e);
+    }
+    // If queue exhausted or empty, generate a fresh non-repeating permutation
+    const freshShuffle = shuffleArray(fullList);
+    saveShuffleQueue(categoryId, freshShuffle);
+    return freshShuffle;
+  }
+
+  function saveShuffleQueue(categoryId, remainingList) {
+    try {
+      const stored = localStorage.getItem(STORAGE_KEY_SHUFFLE_CYCLE);
+      const allQueues = stored ? JSON.parse(stored) : {};
+      allQueues[categoryId] = (remainingList || []).map((item) => ({ q: item.q }));
+      localStorage.setItem(STORAGE_KEY_SHUFFLE_CYCLE, JSON.stringify(allQueues));
+    } catch (e) {
+      console.warn("Could not write shuffle queue to localStorage", e);
+    }
+  }
+
+  function advanceShuffleQueue() {
+    if (selectedMode === "shuffle" && pool && pool.length > 0) {
+      const remaining = pool.slice(idx + 1);
+      saveShuffleQueue(selectedCategoryId, remaining);
+    }
   }
 
   function buildPool(categoryId) {
@@ -438,6 +485,7 @@
   /**
    * Intelligently generate 4 distinct choices for MCQ mode:
    * 1 correct answer + 3 plausible distractors from the same category/pool.
+   * Guaranteed zero duplicates across all 4 options.
    */
   function generateMcqOptions(currentItem) {
     const correctAnswer = currentItem.a.trim();
@@ -458,7 +506,10 @@
         if (cat.id !== currentCatId) {
           cat.questions.forEach((q) => {
             const trimmed = q.a.trim();
-            if (trimmed.toLowerCase() !== correctAnswer.toLowerCase() && !poolAnswers.includes(trimmed)) {
+            if (
+              trimmed.toLowerCase() !== correctAnswer.toLowerCase() &&
+              !poolAnswers.some((a) => a.toLowerCase() === trimmed.toLowerCase())
+            ) {
               poolAnswers.push(trimmed);
             }
           });
@@ -466,13 +517,21 @@
       });
     }
 
-    // 3. Shuffle distractors and pick 3
-    const shuffledDistractors = shuffleArray(Array.from(new Set(poolAnswers))).slice(0, 3);
+    // 3. Shuffle and pick 3 unique distractors (case-insensitive deduplication)
+    const uniqueDistractors = [];
+    const seenLower = new Set([correctAnswer.toLowerCase()]);
+    shuffleArray(poolAnswers).forEach((ans) => {
+      const lower = ans.toLowerCase();
+      if (!seenLower.has(lower) && uniqueDistractors.length < 3) {
+        seenLower.add(lower);
+        uniqueDistractors.push(ans);
+      }
+    });
 
     // 4. Combine correct answer + 3 distractors
     const rawOptions = [
       { text: correctAnswer, isCorrect: true },
-      ...shuffledDistractors.map((distractor) => ({ text: distractor, isCorrect: false }))
+      ...uniqueDistractors.map((distractor) => ({ text: distractor, isCorrect: false })),
     ];
 
     // 5. Shuffle the 4 options and assign letters A, B, C, D
@@ -481,7 +540,7 @@
     return finalShuffled.map((opt, i) => ({
       ...opt,
       letter: letters[i],
-      index: i
+      index: i,
     }));
   }
 
@@ -489,11 +548,13 @@
     stopTimer();
 
     if (customPool && Array.isArray(customPool) && customPool.length > 0) {
-      pool = [...customPool];
+      pool = selectedMode === "shuffle" ? shuffleArray(customPool) : [...customPool];
     } else {
-      pool = buildPool(selectedCategoryId);
+      const fullList = buildPool(selectedCategoryId);
       if (selectedMode === "shuffle") {
-        pool = shuffleArray(pool);
+        pool = getShuffleQueue(selectedCategoryId, fullList);
+      } else {
+        pool = fullList;
       }
     }
 
@@ -665,6 +726,7 @@
       correct++;
       el("correct-count").textContent = correct;
       saveQuestionResult(currentItem.categoryId, true);
+      advanceShuffleQueue();
 
       // Card micro-interaction
       const card = el("quiz-card");
@@ -686,6 +748,7 @@
         roundMissedByCat[currentItem.categoryId] = (roundMissedByCat[currentItem.categoryId] || 0) + 1;
       }
       saveQuestionResult(currentItem.categoryId, false);
+      advanceShuffleQueue();
 
       // Reveal the true correct answer button
       const correctIdx = currentMcqOptions.findIndex((o) => o.isCorrect);
@@ -748,6 +811,7 @@
     if (currentItem.categoryId) {
       saveQuestionResult(currentItem.categoryId, gotItRight);
     }
+    advanceShuffleQueue();
 
     // Micro-interaction animation
     const card = el("quiz-card");
