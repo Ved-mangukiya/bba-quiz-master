@@ -60,8 +60,7 @@
   // --- Theme Management ---
   function initTheme() {
     const savedTheme = localStorage.getItem(STORAGE_KEY_THEME);
-    const prefersDark = window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches;
-    const initialTheme = savedTheme || (prefersDark ? "dark" : "dark"); // Default dark navy theme
+    const initialTheme = savedTheme || "light"; // Default clean white broadsheet theme
     setTheme(initialTheme);
 
     const themeToggleBtn = el("theme-toggle");

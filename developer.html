@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -242,7 +242,7 @@
     (function () {
       const STORAGE_KEY_THEME = "bellringer_theme_v1";
       const TICKER_PIXELS_PER_SECOND = 42; // Exactly matches index.html velocity
-      const savedTheme = localStorage.getItem(STORAGE_KEY_THEME) || "dark";
+      const savedTheme = localStorage.getItem(STORAGE_KEY_THEME) || "light";
       document.documentElement.setAttribute("data-theme", savedTheme);
 
       // Set identical velocity for ticker
