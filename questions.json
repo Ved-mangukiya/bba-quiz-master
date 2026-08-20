@@ -1,0 +1,1076 @@
+{
+  "categories": [
+    {
+      "id": "terms",
+      "name": "Business Terms & Abbreviations",
+      "questions": [
+        {
+          "q": "What does CEO stand for?",
+          "a": "Chief Executive Officer"
+        },
+        {
+          "q": "What does CFO stand for?",
+          "a": "Chief Financial Officer"
+        },
+        {
+          "q": "What does COO stand for?",
+          "a": "Chief Operating Officer"
+        },
+        {
+          "q": "What does CAGR stand for?",
+          "a": "Compound Annual Growth Rate"
+        },
+        {
+          "q": "What does IPO stand for?",
+          "a": "Initial Public Offering"
+        },
+        {
+          "q": "What does FPO stand for?",
+          "a": "Follow-on Public Offering"
+        },
+        {
+          "q": "What does B2B stand for?",
+          "a": "Business to Business"
+        },
+        {
+          "q": "What does B2C stand for?",
+          "a": "Business to Consumer"
+        },
+        {
+          "q": "What does C2C stand for?",
+          "a": "Consumer to Consumer"
+        },
+        {
+          "q": "What does USP stand for?",
+          "a": "Unique Selling Proposition"
+        },
+        {
+          "q": "What does ROI stand for?",
+          "a": "Return on Investment"
+        },
+        {
+          "q": "What does ROE stand for?",
+          "a": "Return on Equity"
+        },
+        {
+          "q": "What does EBITDA stand for?",
+          "a": "Earnings Before Interest, Tax, Depreciation and Amortization"
+        },
+        {
+          "q": "What does GDP stand for?",
+          "a": "Gross Domestic Product"
+        },
+        {
+          "q": "What does GNP stand for?",
+          "a": "Gross National Product"
+        },
+        {
+          "q": "What does FMCG stand for?",
+          "a": "Fast Moving Consumer Goods"
+        },
+        {
+          "q": "What does MOU stand for?",
+          "a": "Memorandum of Understanding"
+        },
+        {
+          "q": "What does NGO stand for?",
+          "a": "Non-Governmental Organization"
+        },
+        {
+          "q": "What does HR stand for?",
+          "a": "Human Resources"
+        },
+        {
+          "q": "What does KPI stand for?",
+          "a": "Key Performance Indicator"
+        },
+        {
+          "q": "What does SWOT stand for?",
+          "a": "Strengths, Weaknesses, Opportunities, Threats"
+        },
+        {
+          "q": "What does PESTLE analysis stand for?",
+          "a": "Political, Economic, Social, Technological, Legal, Environmental"
+        },
+        {
+          "q": "What does GST stand for?",
+          "a": "Goods and Services Tax"
+        },
+        {
+          "q": "What does NPA stand for (banking)?",
+          "a": "Non-Performing Asset"
+        },
+        {
+          "q": "What does EPS stand for?",
+          "a": "Earnings Per Share"
+        },
+        {
+          "q": "What does P/E ratio stand for?",
+          "a": "Price to Earnings ratio"
+        },
+        {
+          "q": "What does MRP stand for?",
+          "a": "Maximum Retail Price"
+        },
+        {
+          "q": "What does SME stand for?",
+          "a": "Small and Medium Enterprises"
+        },
+        {
+          "q": "What does MSME stand for?",
+          "a": "Micro, Small and Medium Enterprises"
+        },
+        {
+          "q": "What does JV stand for?",
+          "a": "Joint Venture"
+        },
+        {
+          "q": "What does UI/UX stand for?",
+          "a": "User Interface / User Experience"
+        },
+        {
+          "q": "What is an 'Angel Investor'?",
+          "a": "An individual who provides early-stage startup capital, usually for equity or convertible debt"
+        },
+        {
+          "q": "What does SKU stand for (retail/inventory)?",
+          "a": "Stock Keeping Unit"
+        },
+        {
+          "q": "What is a 'Decacorn'?",
+          "a": "A privately held startup valued at over $10 billion"
+        },
+        {
+          "q": "What is a 'Unicorn' (business term)?",
+          "a": "A privately held startup valued at over $1 billion"
+        }
+      ]
+    },
+    {
+      "id": "marketing",
+      "name": "Marketing Concepts",
+      "questions": [
+        {
+          "q": "Name the 4 Ps of the marketing mix.",
+          "a": "Product, Price, Place, Promotion"
+        },
+        {
+          "q": "What are the additional 3 Ps for services marketing?",
+          "a": "People, Process, Physical Evidence"
+        },
+        {
+          "q": "STP stands for Segmentation, Targeting, and ___?",
+          "a": "Positioning"
+        },
+        {
+          "q": "What is a 'USP'?",
+          "a": "The feature that differentiates a product from competitors"
+        },
+        {
+          "q": "What term describes dividing a market into distinct groups of buyers?",
+          "a": "Market Segmentation"
+        },
+        {
+          "q": "What is 'brand equity'?",
+          "a": "The value a brand adds to a product beyond its functional benefits"
+        },
+        {
+          "q": "What is 'word of mouth marketing' also called?",
+          "a": "Buzz marketing"
+        },
+        {
+          "q": "What is the marketing term for a product's life stages?",
+          "a": "Product Life Cycle (PLC)"
+        },
+        {
+          "q": "What is 'guerrilla marketing'?",
+          "a": "Low-cost, unconventional marketing tactics for maximum impact"
+        },
+        {
+          "q": "What is a 'loss leader'?",
+          "a": "A product sold below cost to attract customers"
+        },
+        {
+          "q": "What does 'AIDA' stand for in advertising?",
+          "a": "Attention, Interest, Desire, Action"
+        },
+        {
+          "q": "What is 'influencer marketing'?",
+          "a": "Marketing through individuals with a dedicated social following"
+        },
+        {
+          "q": "What is 'market penetration'?",
+          "a": "Increasing market share of existing products in existing markets"
+        },
+        {
+          "q": "What is 'rebranding'?",
+          "a": "Changing a company's corporate image or identity"
+        },
+        {
+          "q": "What is 'niche marketing'?",
+          "a": "Targeting a small, specific segment of the market"
+        },
+        {
+          "q": "What is 'viral marketing'?",
+          "a": "Marketing that spreads rapidly through social sharing"
+        },
+        {
+          "q": "What is 'cannibalization' in marketing?",
+          "a": "When a new product reduces sales of a company's own existing product"
+        },
+        {
+          "q": "What is 'co-branding'?",
+          "a": "Two or more brands partnering on a single product"
+        },
+        {
+          "q": "What is 'up-selling'?",
+          "a": "Encouraging customers to buy a costlier version of a product"
+        },
+        {
+          "q": "What is 'cross-selling'?",
+          "a": "Selling a related/complementary product to an existing customer"
+        },
+        {
+          "q": "What is 'market skimming pricing'?",
+          "a": "Setting a high price initially, lowering it over time"
+        },
+        {
+          "q": "In the BCG Growth-Share Matrix, what are units with high market share in a slow-growth industry called?",
+          "a": "Cash Cows"
+        },
+        {
+          "q": "In the BCG Matrix, what are units with high market share in a high-growth industry called?",
+          "a": "Stars"
+        },
+        {
+          "q": "In the BCG Matrix, what are low-share, low-growth units called?",
+          "a": "Dogs"
+        },
+        {
+          "q": "In the BCG Matrix, what are high-growth, low-share units (needing investment decisions) called?",
+          "a": "Question Marks"
+        }
+      ]
+    },
+    {
+      "id": "finance",
+      "name": "Finance & Economics Basics",
+      "questions": [
+        {
+          "q": "What is 'inflation'?",
+          "a": "A general rise in prices and fall in purchasing power of money"
+        },
+        {
+          "q": "What is 'deflation'?",
+          "a": "A general decline in prices"
+        },
+        {
+          "q": "What is 'stagflation'?",
+          "a": "Simultaneous stagnant growth, high inflation, and high unemployment"
+        },
+        {
+          "q": "What is 'fiscal policy'?",
+          "a": "Government policy relating to taxation and spending"
+        },
+        {
+          "q": "What is 'monetary policy'?",
+          "a": "Central bank policy controlling money supply and interest rates"
+        },
+        {
+          "q": "Who regulates monetary policy in India?",
+          "a": "Reserve Bank of India (RBI)"
+        },
+        {
+          "q": "Who regulates India's securities market?",
+          "a": "SEBI (Securities and Exchange Board of India)"
+        },
+        {
+          "q": "What is a 'bull market'?",
+          "a": "A market where prices are rising"
+        },
+        {
+          "q": "What is a 'bear market'?",
+          "a": "A market where prices are falling"
+        },
+        {
+          "q": "What is 'working capital'?",
+          "a": "Current assets minus current liabilities"
+        },
+        {
+          "q": "What is 'breakeven point'?",
+          "a": "Where total revenue equals total costs"
+        },
+        {
+          "q": "What is 'equity'?",
+          "a": "Ownership interest in a company represented by shares"
+        },
+        {
+          "q": "What is a 'dividend'?",
+          "a": "A portion of profit distributed to shareholders"
+        },
+        {
+          "q": "What is 'diversification' in investing?",
+          "a": "Spreading investments to reduce risk"
+        },
+        {
+          "q": "What is 'liquidity'?",
+          "a": "The ease with which an asset can be converted to cash"
+        },
+        {
+          "q": "What is a 'mutual fund'?",
+          "a": "A pooled investment vehicle managed by professionals"
+        },
+        {
+          "q": "What is 'venture capital'?",
+          "a": "Funding provided to startups with high growth potential"
+        },
+        {
+          "q": "What is 'repo rate'?",
+          "a": "The rate at which the central bank lends to commercial banks"
+        },
+        {
+          "q": "What is 'fiscal deficit'?",
+          "a": "The gap between government spending and revenue"
+        },
+        {
+          "q": "What is a 'blue-chip stock'?",
+          "a": "Shares of a well-established, financially sound company"
+        },
+        {
+          "q": "What is 'market capitalization'?",
+          "a": "Total value of a company's outstanding shares"
+        },
+        {
+          "q": "What is 'demonetization'?",
+          "a": "Withdrawing a currency unit's status as legal tender"
+        },
+        {
+          "q": "What is 'Debt-to-Equity Ratio'?",
+          "a": "Total debt divided by total shareholders' equity — measures financial leverage"
+        },
+        {
+          "q": "What is 'Hurdle Rate'?",
+          "a": "The minimum acceptable return an investor requires before funding a project"
+        },
+        {
+          "q": "What are the two major Indian stock exchanges?",
+          "a": "BSE and NSE"
+        }
+      ]
+    },
+    {
+      "id": "companies",
+      "name": "Famous Companies — Founders & Origins",
+      "questions": [
+        {
+          "q": "Who founded Amazon, and in which year?",
+          "a": "Jeff Bezos, 1994"
+        },
+        {
+          "q": "Who founded Microsoft?",
+          "a": "Bill Gates and Paul Allen"
+        },
+        {
+          "q": "Who founded Apple?",
+          "a": "Steve Jobs, Steve Wozniak, and Ronald Wayne"
+        },
+        {
+          "q": "Who founded Facebook (now Meta)?",
+          "a": "Mark Zuckerberg"
+        },
+        {
+          "q": "Who were Tesla's original founders (before Musk became CEO)?",
+          "a": "Martin Eberhard and Marc Tarpenning"
+        },
+        {
+          "q": "Who founded Google, and what was it originally called?",
+          "a": "Larry Page and Sergey Brin; originally called 'BackRub'"
+        },
+        {
+          "q": "Who founded Alibaba?",
+          "a": "Jack Ma"
+        },
+        {
+          "q": "Who founded Reliance Industries?",
+          "a": "Dhirubhai Ambani"
+        },
+        {
+          "q": "Who founded the Tata Group?",
+          "a": "Jamsetji Tata"
+        },
+        {
+          "q": "Who founded Infosys?",
+          "a": "N. R. Narayana Murthy and six co-founders"
+        },
+        {
+          "q": "Who founded Flipkart?",
+          "a": "Sachin Bansal and Binny Bansal"
+        },
+        {
+          "q": "Who founded Zomato (now Eternal)?",
+          "a": "Deepinder Goyal and Pankaj Chaddah"
+        },
+        {
+          "q": "Who founded Ola Cabs?",
+          "a": "Bhavish Aggarwal and Ankit Bhati"
+        },
+        {
+          "q": "Who founded Paytm?",
+          "a": "Vijay Shekhar Sharma"
+        },
+        {
+          "q": "Who founded Byju's?",
+          "a": "Byju Raveendran"
+        },
+        {
+          "q": "Who founded Nykaa?",
+          "a": "Falguni Nayar"
+        },
+        {
+          "q": "Which company owns Instagram and WhatsApp?",
+          "a": "Meta"
+        },
+        {
+          "q": "Which company acquired Flipkart in 2018?",
+          "a": "Walmart"
+        },
+        {
+          "q": "Who founded Starbucks?",
+          "a": "Jerry Baldwin, Zev Siegl, and Gordon Bowker"
+        },
+        {
+          "q": "In which Swedish town was IKEA founded by Ingvar Kamprad in 1943?",
+          "a": "Älmhult"
+        },
+        {
+          "q": "Nike was originally founded under what name in 1964?",
+          "a": "Blue Ribbon Sports"
+        },
+        {
+          "q": "Where is Nestlé's global headquarters located?",
+          "a": "Vevey, Switzerland"
+        },
+        {
+          "q": "Who founded Uber, and what's the popular origin story?",
+          "a": "Travis Kalanick and Garrett Camp, after struggling to get a cab on a snowy Paris evening"
+        },
+        {
+          "q": "Where is Sony Corporation's headquarters located?",
+          "a": "Tokyo, Japan"
+        },
+        {
+          "q": "PayPal was formed from the merger of Confinity and which other company (founded by Elon Musk)?",
+          "a": "X.com"
+        },
+        {
+          "q": "Who founded Adidas?",
+          "a": "Adolf 'Adi' Dassler"
+        },
+        {
+          "q": "Which company did Sam Walton found?",
+          "a": "Walmart"
+        }
+      ]
+    },
+    {
+      "id": "taglines",
+      "name": "Taglines & Logos",
+      "questions": [
+        {
+          "q": "Which company's tagline is 'Just Do It'?",
+          "a": "Nike"
+        },
+        {
+          "q": "Which company's tagline is 'Think Different'?",
+          "a": "Apple"
+        },
+        {
+          "q": "Which company's tagline is 'I'm Lovin' It'?",
+          "a": "McDonald's"
+        },
+        {
+          "q": "Which company's tagline is 'The Ultimate Driving Machine'?",
+          "a": "BMW"
+        },
+        {
+          "q": "Which company's tagline is 'Because You're Worth It'?",
+          "a": "L'Oréal"
+        },
+        {
+          "q": "Which company's tagline is 'Connecting People'?",
+          "a": "Nokia"
+        },
+        {
+          "q": "Which company's tagline is 'Impossible is Nothing'?",
+          "a": "Adidas"
+        },
+        {
+          "q": "Which company's tagline is 'Taste the Feeling'?",
+          "a": "Coca-Cola"
+        },
+        {
+          "q": "Which company's tagline is 'Belong Anywhere'?",
+          "a": "Airbnb"
+        },
+        {
+          "q": "Which confectionery brand's tagline is 'Have a Break, Have a...'?",
+          "a": "KitKat"
+        },
+        {
+          "q": "Which Indian brand's tagline is 'The Complete Man'?",
+          "a": "Raymond"
+        },
+        {
+          "q": "Which Indian brand's tagline is 'Har Ek Friend Zaroori Hota Hai'?",
+          "a": "Airtel"
+        },
+        {
+          "q": "Which company's logo is a bitten apple?",
+          "a": "Apple"
+        },
+        {
+          "q": "Which company's logo is a golden 'M' arch?",
+          "a": "McDonald's"
+        },
+        {
+          "q": "Which brand's logo is a swoosh?",
+          "a": "Nike"
+        },
+        {
+          "q": "Which company's logo has three stripes?",
+          "a": "Adidas"
+        },
+        {
+          "q": "Which car brand's logo has four interlocking rings?",
+          "a": "Audi"
+        },
+        {
+          "q": "What mythological creature appears in Starbucks' green logo?",
+          "a": "A siren (twin-tailed mermaid)"
+        },
+        {
+          "q": "Which Indian company's logo is a stylized 'T'?",
+          "a": "Tata Group"
+        },
+        {
+          "q": "Which car company's logo is a three-pointed star?",
+          "a": "Mercedes-Benz"
+        }
+      ]
+    },
+    {
+      "id": "leaders",
+      "name": "Business Personalities & Leaders",
+      "questions": [
+        {
+          "q": "Who is often called the 'Father of Modern Management'?",
+          "a": "Peter Drucker"
+        },
+        {
+          "q": "Who developed the assembly line for mass car production?",
+          "a": "Henry Ford"
+        },
+        {
+          "q": "Who leads Reliance Industries as Chairman (Dhirubhai's son)?",
+          "a": "Mukesh Ambani"
+        },
+        {
+          "q": "Who is known as the 'Oracle of Omaha'?",
+          "a": "Warren Buffett"
+        },
+        {
+          "q": "Which company does Warren Buffett lead?",
+          "a": "Berkshire Hathaway"
+        },
+        {
+          "q": "Who wrote 'The Wealth of Nations'?",
+          "a": "Adam Smith"
+        },
+        {
+          "q": "Who proposed the '14 Principles of Management'?",
+          "a": "Henri Fayol"
+        },
+        {
+          "q": "Who developed 'Scientific Management' theory?",
+          "a": "Frederick Winslow Taylor"
+        },
+        {
+          "q": "Who founded SpaceX and leads Tesla today?",
+          "a": "Elon Musk"
+        },
+        {
+          "q": "Who founded the Virgin Group?",
+          "a": "Richard Branson"
+        },
+        {
+          "q": "Who founded and led Apple through the iPhone/iPad era?",
+          "a": "Steve Jobs"
+        },
+        {
+          "q": "Who authored 'Good to Great'?",
+          "a": "Jim Collins"
+        },
+        {
+          "q": "Which economist proposed 'creative destruction'?",
+          "a": "Joseph Schumpeter"
+        },
+        {
+          "q": "Who is regarded as the founder of modern advertising (Ogilvy agency)?",
+          "a": "David Ogilvy"
+        },
+        {
+          "q": "Who wrote 'Think and Grow Rich'?",
+          "a": "Napoleon Hill"
+        },
+        {
+          "q": "Who founded Oracle Corporation?",
+          "a": "Larry Ellison"
+        },
+        {
+          "q": "Which Harvard professor developed the 'Five Forces' framework for industry analysis?",
+          "a": "Michael Porter"
+        },
+        {
+          "q": "Who served as CEO of PepsiCo from 2006–2018, a globally influential Indian-origin business leader?",
+          "a": "Indra Nooyi"
+        },
+        {
+          "q": "Who developed the 'Nonaka-Takeuchi model' in Knowledge Management?",
+          "a": "Ikujiro Nonaka"
+        },
+        {
+          "q": "Who developed the concept of 'Hierarchy of Needs'?",
+          "a": "Abraham Maslow"
+        },
+        {
+          "q": "Who proposed 'Theory X and Theory Y' of employee motivation?",
+          "a": "Douglas McGregor"
+        }
+      ]
+    },
+    {
+      "id": "management",
+      "name": "Management Concepts & Theories",
+      "questions": [
+        {
+          "q": "What does 'POSDCORB' stand for?",
+          "a": "Planning, Organizing, Staffing, Directing, Coordinating, Reporting, Budgeting"
+        },
+        {
+          "q": "What are the three basic types of business organization?",
+          "a": "Sole Proprietorship, Partnership, Company (Corporation)"
+        },
+        {
+          "q": "What is 'span of control'?",
+          "a": "The number of subordinates a manager can effectively supervise"
+        },
+        {
+          "q": "What is 'delegation' in management?",
+          "a": "Assigning responsibility and authority to subordinates"
+        },
+        {
+          "q": "What is a 'matrix organization'?",
+          "a": "A structure where employees report to multiple managers"
+        },
+        {
+          "q": "What is 'outsourcing'?",
+          "a": "Contracting work to an external party instead of doing it in-house"
+        },
+        {
+          "q": "What is 'corporate governance'?",
+          "a": "The system of rules by which a company is directed and controlled"
+        },
+        {
+          "q": "What is 'CSR'?",
+          "a": "Corporate Social Responsibility"
+        },
+        {
+          "q": "What is a 'merger'?",
+          "a": "Two companies combining to form one entity"
+        },
+        {
+          "q": "What is an 'acquisition'?",
+          "a": "One company purchasing and taking control of another"
+        },
+        {
+          "q": "What is a 'hostile takeover'?",
+          "a": "An acquisition made against the target company's wishes"
+        },
+        {
+          "q": "What is 'franchising'?",
+          "a": "A model where a franchisee operates under a franchisor's brand"
+        },
+        {
+          "q": "What is 'Just-In-Time (JIT)' inventory?",
+          "a": "Receiving goods only as needed, reducing inventory costs"
+        },
+        {
+          "q": "What is 'Six Sigma'?",
+          "a": "A data-driven methodology for eliminating defects and improving quality"
+        },
+        {
+          "q": "What is 'Total Quality Management (TQM)'?",
+          "a": "A management approach focused on continuous quality improvement"
+        },
+        {
+          "q": "What is 'Kaizen'?",
+          "a": "A Japanese philosophy meaning 'continuous improvement'"
+        }
+      ]
+    },
+    {
+      "id": "india",
+      "name": "India — Business, Economy & Institutions",
+      "questions": [
+        {
+          "q": "What is India's central bank called?",
+          "a": "Reserve Bank of India (RBI)"
+        },
+        {
+          "q": "In which year was GST implemented in India?",
+          "a": "2017"
+        },
+        {
+          "q": "Which is India's largest private-sector company by market capitalization?",
+          "a": "Reliance Industries"
+        },
+        {
+          "q": "What is 'Make in India'?",
+          "a": "A government initiative (launched 2014) promoting domestic manufacturing"
+        },
+        {
+          "q": "What is 'Digital India'?",
+          "a": "A government initiative improving online infrastructure and digital literacy"
+        },
+        {
+          "q": "What is 'Startup India'?",
+          "a": "A government initiative supporting startups"
+        },
+        {
+          "q": "Which Indian company was the first to cross $100 billion market cap?",
+          "a": "Tata Consultancy Services (TCS)"
+        },
+        {
+          "q": "What is 'Atmanirbhar Bharat'?",
+          "a": "A self-reliance initiative promoting domestic manufacturing"
+        },
+        {
+          "q": "Which is India's largest public-sector bank?",
+          "a": "State Bank of India (SBI)"
+        },
+        {
+          "q": "Which Indian company is the largest in the FMCG sector?",
+          "a": "Hindustan Unilever Limited (HUL)"
+        },
+        {
+          "q": "What is 'Jan Dhan Yojana'?",
+          "a": "A financial inclusion scheme for opening bank accounts for all"
+        },
+        {
+          "q": "Which Indian index tracks the top 30 companies on BSE?",
+          "a": "Sensex"
+        },
+        {
+          "q": "Which Indian index tracks the top 50 companies on NSE?",
+          "a": "Nifty 50"
+        },
+        {
+          "q": "What is 'Aadhaar'?",
+          "a": "India's unique biometric identity number system"
+        },
+        {
+          "q": "Which is the largest two-wheeler manufacturer in India?",
+          "a": "Hero MotoCorp"
+        },
+        {
+          "q": "Which conglomerate owns Jio, Reliance Retail, and Reliance Petrochemicals?",
+          "a": "Reliance Industries"
+        },
+        {
+          "q": "Which dairy cooperative brand emerged from Gujarat's 'Operation Flood'?",
+          "a": "Amul (GCMMF)"
+        },
+        {
+          "q": "In which Indian city is Infosys headquartered?",
+          "a": "Bengaluru"
+        },
+        {
+          "q": "Which private Indian bank was set up in 1994 as a subsidiary of HDFC?",
+          "a": "HDFC Bank"
+        },
+        {
+          "q": "Who founded Sun Pharma?",
+          "a": "Dilip Shanghvi"
+        },
+        {
+          "q": "What is UPI, India's digital payments backbone?",
+          "a": "Unified Payments Interface, developed by NPCI"
+        }
+      ]
+    },
+    {
+      "id": "gdp",
+      "name": "World & Indian GDP / Global Economy",
+      "questions": [
+        {
+          "q": "Which country currently has the world's largest economy by nominal GDP?",
+          "a": "The United States (roughly $30 trillion+)"
+        },
+        {
+          "q": "Which country has the world's second-largest economy by nominal GDP?",
+          "a": "China"
+        },
+        {
+          "q": "Which country has the world's largest economy when measured by Purchasing Power Parity (PPP)?",
+          "a": "China"
+        },
+        {
+          "q": "What does 'GDP per capita' measure?",
+          "a": "A country's GDP divided by its population — average economic output per person"
+        },
+        {
+          "q": "India currently ranks around which position in the world by nominal GDP (as of 2025–26 estimates)?",
+          "a": "Around 4th–5th largest (near Japan, behind US, China, Germany)"
+        },
+        {
+          "q": "What is the difference between 'nominal GDP' and 'GDP at PPP'?",
+          "a": "Nominal GDP uses market exchange rates; PPP adjusts for differences in cost of living/purchasing power between countries"
+        },
+        {
+          "q": "Which international body publishes the widely-cited World Economic Outlook GDP rankings?",
+          "a": "The International Monetary Fund (IMF)"
+        },
+        {
+          "q": "What is a 'developing economy' generally characterized by?",
+          "a": "Lower per-capita income, industrializing economy, often high growth potential"
+        },
+        {
+          "q": "Which group of major economies is often called the 'G7'?",
+          "a": "US, Canada, UK, France, Germany, Italy, Japan"
+        },
+        {
+          "q": "What does 'BRICS' stand for?",
+          "a": "Brazil, Russia, India, China, South Africa (an expanding economic bloc)"
+        },
+        {
+          "q": "What is 'GDP growth rate'?",
+          "a": "The percentage change in a country's total economic output over a period, usually a year"
+        },
+        {
+          "q": "Which Asian country is generally forecast to have one of the highest GDP growth rates among major economies in the mid-2020s?",
+          "a": "India (among major economies, typically 6–7%+ forecast growth)"
+        },
+        {
+          "q": "What is a 'trade deficit'?",
+          "a": "When a country's imports exceed its exports in value"
+        },
+        {
+          "q": "What is a 'trade surplus'?",
+          "a": "When a country's exports exceed its imports in value"
+        },
+        {
+          "q": "What organization tracks and reports global trade and tariff rules?",
+          "a": "WTO (World Trade Organization)"
+        }
+      ]
+    },
+    {
+      "id": "accounting",
+      "name": "Accounting Basics",
+      "questions": [
+        {
+          "q": "What is the fundamental accounting equation?",
+          "a": "Assets = Liabilities + Owner's Equity (Capital)"
+        },
+        {
+          "q": "What are the three main types of financial statements?",
+          "a": "Balance Sheet, Income Statement (P&L), Cash Flow Statement"
+        },
+        {
+          "q": "What is a 'Balance Sheet'?",
+          "a": "A statement showing a company's assets, liabilities, and equity at a specific point in time"
+        },
+        {
+          "q": "What is a 'Profit & Loss (P&L) Statement' also called?",
+          "a": "Income Statement"
+        },
+        {
+          "q": "What is a 'Cash Flow Statement' used for?",
+          "a": "Tracking cash inflows and outflows across operating, investing, and financing activities"
+        },
+        {
+          "q": "What is a 'Journal' in accounting?",
+          "a": "The book of original entry where transactions are first recorded"
+        },
+        {
+          "q": "What is a 'Ledger'?",
+          "a": "A book/record that summarizes all journal entries by account"
+        },
+        {
+          "q": "What is a 'Trial Balance'?",
+          "a": "A statement listing all ledger account balances to check if debits equal credits"
+        },
+        {
+          "q": "In double-entry bookkeeping, every transaction affects how many accounts, minimum?",
+          "a": "Two (one debit, one corresponding credit)"
+        },
+        {
+          "q": "What is 'Depreciation'?",
+          "a": "The systematic reduction in the recorded value of a fixed asset over its useful life"
+        },
+        {
+          "q": "What is 'Goodwill' in accounting?",
+          "a": "An intangible asset representing a company's reputation/brand value beyond its net tangible assets"
+        },
+        {
+          "q": "What are 'Current Assets'?",
+          "a": "Assets expected to be converted to cash or used within one year (e.g., cash, inventory, receivables)"
+        },
+        {
+          "q": "What are 'Fixed Assets'?",
+          "a": "Long-term tangible assets used in operations (e.g., machinery, buildings, land)"
+        },
+        {
+          "q": "What is 'Accounts Receivable'?",
+          "a": "Money owed to a company by its customers for goods/services delivered on credit"
+        },
+        {
+          "q": "What is 'Accounts Payable'?",
+          "a": "Money a company owes to its suppliers/creditors"
+        },
+        {
+          "q": "What is 'Gross Profit'?",
+          "a": "Revenue minus Cost of Goods Sold (COGS)"
+        },
+        {
+          "q": "What is 'Net Profit'?",
+          "a": "Gross Profit minus all other operating expenses, taxes, and interest"
+        },
+        {
+          "q": "What is an 'Audit'?",
+          "a": "An independent examination of financial records to ensure accuracy and compliance"
+        },
+        {
+          "q": "What accounting standard body governs financial reporting in India?",
+          "a": "ICAI (Institute of Chartered Accountants of India), which issues Ind AS"
+        },
+        {
+          "q": "What is 'Capital Expenditure (CapEx)'?",
+          "a": "Money spent on acquiring or upgrading long-term physical assets"
+        }
+      ]
+    },
+    {
+      "id": "howbusiness",
+      "name": "How Business Works",
+      "questions": [
+        {
+          "q": "Why do companies go public (IPO) instead of staying private?",
+          "a": "To raise capital for growth, provide liquidity to early investors, and increase public profile"
+        },
+        {
+          "q": "What is the basic difference between a 'Public Limited Company' and a 'Private Limited Company'?",
+          "a": "A public company can offer shares to the general public and is listed on an exchange; a private company cannot and has restricted share transfer"
+        },
+        {
+          "q": "Why might a company choose debt financing over equity financing?",
+          "a": "To raise capital without diluting ownership, though it creates repayment obligations"
+        },
+        {
+          "q": "What is 'economies of scale'?",
+          "a": "Cost advantages a business gains as production increases, lowering per-unit cost"
+        },
+        {
+          "q": "What is a 'supply and demand' relationship in simple terms?",
+          "a": "Prices rise when demand exceeds supply, and fall when supply exceeds demand"
+        },
+        {
+          "q": "Why do businesses conduct market research before launching a product?",
+          "a": "To understand customer needs, reduce risk, and validate demand before investing resources"
+        },
+        {
+          "q": "What is a 'value chain'?",
+          "a": "The sequence of activities a company performs to deliver a valuable product/service, from raw material to customer"
+        },
+        {
+          "q": "What is 'vertical integration'?",
+          "a": "When a company controls multiple stages of its supply chain (e.g., owning suppliers or distributors)"
+        },
+        {
+          "q": "What is 'horizontal integration'?",
+          "a": "When a company acquires or merges with competitors at the same stage of production"
+        },
+        {
+          "q": "Why do startups often prioritize growth over profit in early years?",
+          "a": "To capture market share and scale user base, planning to monetize later"
+        },
+        {
+          "q": "What is a 'break-even analysis' used for in business decisions?",
+          "a": "To determine the sales volume needed to cover total costs before making a profit"
+        },
+        {
+          "q": "What is 'opportunity cost'?",
+          "a": "The value of the next best alternative given up when making a choice"
+        },
+        {
+          "q": "Why is 'cash flow' often more critical to a small business's survival than 'profit'?",
+          "a": "A profitable business can still fail if it runs out of cash to meet short-term obligations"
+        },
+        {
+          "q": "What is a 'competitive advantage'?",
+          "a": "A unique attribute that allows a company to outperform competitors"
+        },
+        {
+          "q": "What is 'customer lifetime value (CLV)'?",
+          "a": "The total revenue a business can expect from a single customer over their relationship"
+        }
+      ]
+    },
+    {
+      "id": "numerical",
+      "name": "Numerical Problem-Solving",
+      "questions": [
+        {
+          "q": "A company's revenue grew from ₹50 lakh in Year 1 to ₹80 lakh in Year 2. What is the growth rate?",
+          "a": "Growth Rate = (80 − 50) / 50 × 100 = 60%"
+        },
+        {
+          "q": "A company had revenue of ₹10 crore in 2022 and ₹16.9 crore in 2025 (3 years later). What is the approximate CAGR?",
+          "a": "CAGR = (Ending Value / Beginning Value)^(1/n) − 1 = (16.9/10)^(1/3) − 1 ≈ 1.19 − 1 = ~19%"
+        },
+        {
+          "q": "A product costs ₹200 to manufacture and is sold for ₹250. What is the profit margin (%)?",
+          "a": "Profit = 250 − 200 = ₹50; Profit Margin = 50/250 × 100 = 20%"
+        },
+        {
+          "q": "A company has fixed costs of ₹5,00,000, variable cost per unit ₹50, and sells each unit for ₹100. What is the breakeven point in units?",
+          "a": "Breakeven Units = Fixed Costs / (Selling Price − Variable Cost) = 5,00,000 / (100−50) = 10,000 units"
+        },
+        {
+          "q": "If a stock's Earnings Per Share (EPS) is ₹20 and its market price is ₹400, what is the P/E ratio?",
+          "a": "P/E Ratio = Market Price / EPS = 400/20 = 20"
+        },
+        {
+          "q": "A company's total debt is ₹4,00,00,000 and its shareholders' equity is ₹2,00,00,000. What is the Debt-to-Equity ratio?",
+          "a": "D/E Ratio = Debt / Equity = 4,00,00,000 / 2,00,00,000 = 2:1"
+        },
+        {
+          "q": "An investor buys a stock at ₹100 and sells it a year later at ₹125, also earning ₹5 as dividend. What is the total return (%)?",
+          "a": "Total Return = [(125 − 100) + 5] / 100 × 100 = 30%"
+        },
+        {
+          "q": "A company's current assets are ₹8,00,000 and current liabilities are ₹4,00,000. What is the current ratio?",
+          "a": "Current Ratio = Current Assets / Current Liabilities = 8,00,000 / 4,00,000 = 2:1"
+        },
+        {
+          "q": "A retailer buys goods for ₹1,00,000 and marks them up by 25% to sell. What is the selling price?",
+          "a": "Selling Price = Cost × (1 + Markup%) = 1,00,000 × 1.25 = ₹1,25,000"
+        },
+        {
+          "q": "A company invests ₹10,00,000 and earns a net profit of ₹2,50,000 in a year. What is its Return on Investment (ROI)?",
+          "a": "ROI = Net Profit / Investment × 100 = 2,50,000 / 10,00,000 × 100 = 25%"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Bell Ringer — BBA Business Quiz Practice</title>
+  <meta name="description" content="Business Quiz Trainer with financial newspaper visual identity for SSASIT vs Amroli inter-college quiz practice." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,400&family=IBM+Plex+Mono:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- Ticker tape: The signature financial headline element -->
+  <div class="ticker-wrap" aria-hidden="true">
+    <div class="ticker" id="ticker"></div>
+  </div>
+
+  <!-- Masthead -->
+  <header class="masthead">
+    <div class="masthead-top">
+      <div class="header-edition">VOL. XXIV &middot; NO. 104 &middot; SURAT EDITION</div>
+      <button id="theme-toggle" class="theme-toggle" type="button" aria-label="Toggle light and dark theme" title="Toggle theme (Alt+T)">
+        <span class="theme-icon-dark" aria-hidden="true">☀️ <span class="theme-label">Light</span></span>
+        <span class="theme-icon-light" aria-hidden="true">🌙 <span class="theme-label">Dark</span></span>
+      </button>
+    </div>
+    <div class="masthead-inner">
+      <p class="eyebrow">SSASIT &middot; BBA-FY &middot; SELF PRACTICE</p>
+      <h1 class="newspaper-title">Bell Ringer</h1>
+      <p class="subhead">Business Quiz Trainer — built for the SSASIT vs Amroli inter-college quiz</p>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- START / CONTROL DECK -->
+    <section class="control-deck" id="control-deck" aria-label="Quiz Configuration">
+      <!-- Weak categories alert (populated dynamically if stats exist) -->
+      <div id="weak-categories-card" class="weak-card" hidden>
+        <div class="weak-card-header">
+          <span class="weak-tag">PERFORMANCE RADAR</span>
+          <span class="weak-sub">Based on previous drills</span>
+        </div>
+        <p class="weak-title" id="weak-summary-text">Focus Area Detected</p>
+        <div class="weak-chips" id="weak-chips-list"></div>
+      </div>
+
+      <!-- Quiz Format Selector (Flashcard vs 4-Option MCQ) -->
+      <div class="deck-group">
+        <div class="deck-header">
+          <label id="format-label" class="deck-label">Quiz Format</label>
+          <span class="deck-badge" id="format-badge-hint">Choose style</span>
+        </div>
+        <div class="chip-group format-chips" role="radiogroup" aria-labelledby="format-label">
+          <button type="button" class="chip is-active" data-format="mcq" role="radio" aria-checked="true">
+            <span class="chip-title">🎯 4-Option MCQ</span>
+            <span class="chip-sub">Kahoot-style with 4 options</span>
+          </button>
+          <button type="button" class="chip" data-format="flashcard" role="radio" aria-checked="false">
+            <span class="chip-title">🎴 Flashcard</span>
+            <span class="chip-sub">Without options & self-check</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Category / Board Selection -->
+      <div class="deck-group">
+        <div class="deck-header">
+          <label id="board-label" class="deck-label">Select Board</label>
+          <span class="deck-badge" id="total-pool-count">Loading questions…</span>
+        </div>
+        <!-- Accessible Native Select (synced with chips) -->
+        <select id="category-select" class="sr-only" aria-labelledby="board-label">
+          <option value="all">All boards (mixed)</option>
+        </select>
+        <!-- Horizontal Scrollable Chip Strip -->
+        <div class="chip-scroll-wrap" role="radiogroup" aria-labelledby="board-label">
+          <div class="chip-group" id="category-chips"></div>
+        </div>
+      </div>
+
+      <!-- Mode Selection -->
+      <div class="deck-group">
+        <div class="deck-header">
+          <label id="mode-label" class="deck-label">Question Order</label>
+        </div>
+        <select id="mode-select" class="sr-only" aria-labelledby="mode-label">
+          <option value="flash">Sequential Order</option>
+          <option value="shuffle">Shuffled Drill</option>
+        </select>
+        <div class="chip-group mode-chips" role="radiogroup" aria-labelledby="mode-label">
+          <button type="button" class="chip is-active" data-mode="shuffle" role="radio" aria-checked="true">
+            <span class="chip-title">🎲 Shuffled Drill</span>
+            <span class="chip-sub">Randomized order</span>
+          </button>
+          <button type="button" class="chip" data-mode="flash" role="radio" aria-checked="false">
+            <span class="chip-title">📖 Sequential</span>
+            <span class="chip-sub">In order (1 to N)</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Timer Option (Rapid-fire mode) -->
+      <div class="deck-group">
+        <div class="deck-header">
+          <label id="timer-label" class="deck-label">Rapid-Fire Timer</label>
+          <span class="deck-badge timer-badge-hint">Per question countdown</span>
+        </div>
+        <div class="chip-group timer-chips" role="radiogroup" aria-labelledby="timer-label">
+          <button type="button" class="chip is-active" data-timer="0" role="radio" aria-checked="true">
+            <span class="chip-title">Untimed</span>
+          </button>
+          <button type="button" class="chip" data-timer="15" role="radio" aria-checked="false">
+            <span class="chip-title">⚡ 15 Seconds</span>
+          </button>
+          <button type="button" class="chip" data-timer="30" role="radio" aria-checked="false">
+            <span class="chip-title">⏱️ 30 Seconds</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Start Button -->
+      <button id="start-btn" class="btn-primary" type="button">
+        <span>Ring the Bell — Start Quiz</span>
+        <span class="btn-arrow">&rarr;</span>
+      </button>
+
+      <!-- Lifetime stats mini summary -->
+      <div class="stats-footer-bar" id="stats-footer-bar">
+        <span id="lifetime-stats-label">Lifetime: 0 drilled</span>
+        <button type="button" id="clear-stats-btn" class="btn-text-link">Reset Stats</button>
+      </div>
+    </section>
+
+    <!-- QUIZ SESSION SCREEN -->
+    <section class="session" id="session" aria-label="Quiz Practice Session" hidden>
+      
+      <!-- Progress Bar Track -->
+      <div class="progress-container">
+        <div class="progress-meta">
+          <span class="progress-title">SESSION PROGRESS</span>
+          <span class="progress-percent" id="progress-percent">0%</span>
+        </div>
+        <div class="progress-track" role="progressbar" id="progress-bar-track" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">
+          <div class="progress-fill" id="progress-fill" style="width: 0%;"></div>
+        </div>
+      </div>
+
+      <!-- Scoreboard (4 cells, responsive 2x2 on mobile, 4-col on desktop) -->
+      <div class="scoreboard" role="region" aria-label="Session Scoreboard">
+        <div class="score-cell">
+          <span class="score-label">Question</span>
+          <span class="score-value" id="progress-count">0 / 0</span>
+        </div>
+        <div class="score-cell">
+          <span class="score-label">Score</span>
+          <span class="score-value ok" id="correct-count">0</span>
+        </div>
+        <div class="score-cell">
+          <span class="score-label">Missed</span>
+          <span class="score-value miss" id="missed-count">0</span>
+        </div>
+        <div class="score-cell score-cell-board">
+          <span class="score-label">Current Board</span>
+          <span class="score-value board-tag" id="current-board">—</span>
+        </div>
+      </div>
+
+      <!-- Timer Indicator Bar (active when timer > 0) -->
+      <div class="timer-display-bar" id="timer-display" hidden>
+        <div class="timer-info">
+          <span class="timer-icon">⏳</span>
+          <span class="timer-text" id="timer-text">15s</span>
+        </div>
+        <div class="timer-track">
+          <div class="timer-fill" id="timer-fill"></div>
+        </div>
+      </div>
+
+      <!-- Question Card Container -->
+      <div class="card-wrapper">
+        <div class="card" id="quiz-card" tabindex="0" role="region" aria-label="Question Card">
+          <!-- Swipe badges for mobile touch feedback in flashcard mode -->
+          <div class="swipe-badge swipe-badge-left" id="swipe-badge-left">✕ MISSED</div>
+          <div class="swipe-badge swipe-badge-right" id="swipe-badge-right">✓ CORRECT</div>
+
+          <div class="card-content" id="card-content">
+            <div class="card-meta">
+              <span class="card-kicker" id="card-kicker">QUESTION</span>
+              <span class="card-badge" id="card-category-badge">Board</span>
+            </div>
+            
+            <p class="card-question" id="card-question">Loading…</p>
+            
+            <!-- MCQ 4-Option Grid (Displayed in MCQ mode) -->
+            <div class="mcq-container" id="mcq-container" hidden>
+              <div class="mcq-grid" id="mcq-grid" role="group" aria-label="Multiple choice options"></div>
+            </div>
+
+            <!-- Flashcard Tap Hint (Displayed only in Flashcard mode before reveal) -->
+            <div class="card-prompt" id="card-prompt" hidden>
+              <span>💡 Tap card or click 'Reveal Answer' below</span>
+            </div>
+
+            <!-- Flashcard Answer Panel (Displayed only in Flashcard mode after reveal) -->
+            <div class="answer-panel" id="answer-panel" hidden>
+              <div class="answer-header">
+                <span class="card-kicker answer-kicker">OFFICIAL ANSWER</span>
+              </div>
+              <p class="card-answer" id="card-answer"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Action Buttons & Interaction Row -->
+      <div class="action-row">
+        <!-- Flashcard Reveal Button -->
+        <button id="reveal-btn" class="btn-outline" type="button" hidden>
+          <span>👁️ Reveal Official Answer</span>
+          <span class="kbd-key desktop-only">Space</span>
+        </button>
+
+        <!-- Flashcard Verdict Buttons (shown only after reveal in Flashcard mode) -->
+        <div class="verdict-row" id="verdict-row" hidden>
+          <button id="wrong-btn" class="btn-verdict wrong" type="button">
+            <span class="verdict-icon">✕</span>
+            <span>I missed it</span>
+            <span class="kbd-key desktop-only">&larr;</span>
+          </button>
+          <button id="right-btn" class="btn-verdict right" type="button">
+            <span class="verdict-icon">✓</span>
+            <span>Got it right</span>
+            <span class="kbd-key desktop-only">&rarr;</span>
+          </button>
+        </div>
+
+        <!-- Shortcuts / Gesture Hints -->
+        <div class="interaction-hints">
+          <!-- Desktop Hints for MCQ Mode -->
+          <div class="desktop-hints desktop-only" id="mcq-desktop-hints" aria-hidden="true" hidden>
+            <span class="hint-item">Press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> or <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to pick answer</span>
+          </div>
+          <!-- Desktop Hints for Flashcard Mode -->
+          <div class="desktop-hints desktop-only" id="flash-desktop-hints" aria-hidden="true" hidden>
+            <span class="hint-item"><kbd>Space</kbd> or <kbd>Enter</kbd> Reveal</span>
+            <span class="hint-divider">&bull;</span>
+            <span class="hint-item"><kbd>&larr;</kbd> Missed</span>
+            <span class="hint-divider">&bull;</span>
+            <span class="hint-item"><kbd>&rarr;</kbd> Correct</span>
+          </div>
+          <!-- Mobile Hints -->
+          <div class="mobile-hints mobile-only" id="mobile-hints" aria-hidden="true">
+            <span id="mobile-hint-text">👉 Tap an option to select your answer</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- End Session -->
+      <div class="session-footer">
+        <button id="end-btn" class="btn-ghost" type="button">End Session Early</button>
+      </div>
+    </section>
+
+    <!-- SESSION SUMMARY SCREEN -->
+    <section class="summary" id="summary" aria-label="Session Summary" hidden>
+      <div class="summary-masthead">
+        <span class="summary-eyebrow">FINAL DISPATCH</span>
+        <h2 id="summary-headline">Session Complete</h2>
+        <div class="summary-score-badge" id="summary-percentage">100%</div>
+      </div>
+
+      <div class="summary-card">
+        <p class="summary-detail" id="summary-detail"></p>
+        
+        <!-- Accuracy Progress Meter -->
+        <div class="summary-bar-wrap">
+          <div class="summary-bar-fill" id="summary-bar-fill" style="width: 0%;"></div>
+        </div>
+
+        <!-- Per-Board Breakdown Table -->
+        <div class="summary-breakdown" id="summary-breakdown">
+          <h3 class="breakdown-title">Board Breakdown</h3>
+          <div class="breakdown-grid" id="breakdown-grid"></div>
+        </div>
+      </div>
+
+      <div class="summary-actions">
+        <!-- Review Missed Questions Button (dynamically shown if missed > 0) -->
+        <button id="review-btn" class="btn-review" type="button" hidden>
+          <span>🎯 Review Missed Questions</span>
+          <span class="btn-badge" id="review-count-badge">0</span>
+        </button>
+        
+        <button id="restart-btn" class="btn-primary" type="button">
+          <span>Run Another Round</span>
+          <span class="btn-arrow">&rarr;</span>
+        </button>
+
+        <button id="back-home-btn" class="btn-ghost" type="button">
+          Back to Board Selection
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <p>Data stored in <code>questions.json</code> &bull; SSASIT Business Quiz Practice System &bull; Zero external backend dependencies.</p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
