@@ -37,6 +37,11 @@ Curated and built by **Ved Mangukiya** (BBA Student, Surat, Gujarat).
 5. **Local Performance Radar**:
    - Automatically tracks accuracy across all 13 boards in `localStorage` without external telemetry. Flags boards below 75% accuracy for focused drills and provides instant "Review Missed Questions" capability.
 
+6. **Bidirectional Question Navigation & Answered State Inspection**:
+   - Seamlessly jump back to previously answered questions anytime using the **Previous Question** button (Hotkey: `P` or `ArrowUp`).
+   - Re-inspect the entire question, all multiple-choice options, exactly what you clicked (tagged with `✓ Your Choice` or `✕ Your Choice`), the highlighted official correct answer, and a clear verdict banner.
+   - Step forward seamlessly with **Next Question** (Hotkey: `N`, `Space`, or `Enter`) to return to your live round without affecting score integrity.
+
 ---
 
 ## 🚀 Running Locally

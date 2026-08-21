@@ -36,6 +36,10 @@
   // Current question's generated MCQ options
   let currentMcqOptions = [];
 
+  // Historical session recording for back-navigation review
+  let sessionHistory = [];
+  let maxAnsweredIdx = 0;
+
   // Touch / Swipe Gesture Tracking
   let touchStartX = 0;
   let touchStartY = 0;
@@ -571,6 +575,8 @@
     roundMissedByCat = {};
     roundTotalByCat = {};
     isTransitioning = false;
+    sessionHistory = [];
+    maxAnsweredIdx = 0;
 
     // Show session screen & hide start deck
     el("session").hidden = false;
@@ -606,11 +612,11 @@
     }
 
     const item = pool[idx];
+    const historyItem = sessionHistory[idx];
+    const isReviewed = Boolean(historyItem && historyItem.answered);
 
-    // Track category participation
-    if (item.categoryId) {
-      roundTotalByCat[item.categoryId] = (roundTotalByCat[item.categoryId] || 0) + 1;
-    }
+    // Update navigation controls state
+    updateNavControls(isReviewed);
 
     // Update text & layout
     el("card-question").textContent = item.q;
@@ -618,29 +624,9 @@
     el("card-category-badge").textContent = item.board;
     el("current-board").textContent = item.board;
 
-    // Format-specific rendering
-    if (selectedFormat === "mcq") {
-      // MCQ Mode: Render 4 options
-      el("mcq-container").hidden = false;
-      el("card-prompt").hidden = true;
-      el("answer-panel").hidden = true;
-      el("reveal-btn").hidden = true;
-      el("verdict-row").hidden = true;
-
-      renderMcqGrid(item);
-    } else {
-      // Flashcard Mode: Reveal button flow
-      el("mcq-container").hidden = true;
-      el("card-prompt").hidden = false;
-      el("answer-panel").hidden = true;
-      el("reveal-btn").hidden = false;
-      el("verdict-row").hidden = true;
-
-      // Focus reveal button for keyboard accessibility
-      setTimeout(() => {
-        const revealBtn = el("reveal-btn");
-        if (revealBtn && !revealBtn.hidden) revealBtn.focus();
-      }, 50);
+    const cardKicker = el("card-kicker");
+    if (cardKicker) {
+      cardKicker.textContent = isReviewed ? `QUESTION ${idx + 1} • REVIEW` : `QUESTION ${idx + 1}`;
     }
 
     // Reset swipe badges
@@ -664,11 +650,163 @@
     const progressTrack = el("progress-bar-track");
     if (progressTrack) progressTrack.setAttribute("aria-valuenow", pct);
 
+    if (isReviewed) {
+      // === REVIEW MODE: Show previously answered state ===
+      renderReviewedQuestion(item, historyItem);
+    } else {
+      // === LIVE MODE: Show active interactive question ===
+      renderLiveQuestion(item);
+    }
+
     // Smooth card entry animation
     const card = el("quiz-card");
     card.classList.remove("card-slide-in", "card-verdict-right", "card-verdict-wrong");
     void card.offsetWidth; // Trigger reflow for animation restart
     card.classList.add("card-slide-in");
+  }
+
+  // --- Render Answered / Historical Question (Review Mode) ---
+  function renderReviewedQuestion(item, historyItem) {
+    hasAnsweredCurrent = true;
+
+    // Hide active prompt & live verdict row & reveal btn
+    const cardPrompt = el("card-prompt");
+    if (cardPrompt) cardPrompt.hidden = true;
+    el("reveal-btn").hidden = true;
+    el("verdict-row").hidden = true;
+
+    // Show review banner and review action row
+    const reviewBanner = el("review-banner");
+    const reviewActionRow = el("review-action-row");
+    if (reviewBanner) reviewBanner.hidden = false;
+    if (reviewActionRow) reviewActionRow.hidden = false;
+
+    // Dynamic button label for review action button
+    const reviewNextBtnText = el("review-next-btn-text");
+    if (reviewNextBtnText) {
+      if (idx + 1 === maxAnsweredIdx && maxAnsweredIdx < pool.length) {
+        reviewNextBtnText.textContent = `Return to Live Question (Q${maxAnsweredIdx + 1})`;
+      } else if (idx + 1 < pool.length) {
+        reviewNextBtnText.textContent = `Next Question (Q${idx + 2})`;
+      } else {
+        reviewNextBtnText.textContent = "View Final Results & Dispatch";
+      }
+    }
+
+    const bannerIcon = el("review-banner-icon");
+    const bannerTitle = el("review-banner-title");
+    const bannerDetail = el("review-banner-detail");
+
+    if (selectedFormat === "mcq") {
+      el("mcq-container").hidden = false;
+      el("answer-panel").hidden = true;
+
+      const grid = el("mcq-grid");
+      grid.innerHTML = "";
+      currentMcqOptions = historyItem.mcqOptions || generateMcqOptions(item);
+
+      currentMcqOptions.forEach((opt, index) => {
+        const btn = document.createElement("button");
+        btn.type = "button";
+        btn.className = "mcq-btn";
+        btn.dataset.index = index;
+        btn.disabled = true;
+        btn.setAttribute("aria-label", `Option ${opt.letter}: ${opt.text}`);
+
+        const wasChosen = index === historyItem.selectedIndex;
+        const isOptionCorrect = opt.isCorrect;
+
+        if (wasChosen) {
+          if (isOptionCorrect) {
+            btn.classList.add("is-correct");
+          } else {
+            btn.classList.add("is-wrong");
+          }
+        } else if (isOptionCorrect && !historyItem.isCorrect) {
+          btn.classList.add("is-revealed-correct");
+        }
+
+        btn.innerHTML = `
+          <span class="mcq-letter">${opt.letter}</span>
+          <span class="mcq-text">${opt.text}</span>
+          ${wasChosen ? `<span class="mcq-choice-tag ${isOptionCorrect ? 'correct-tag' : ''}">${isOptionCorrect ? '✓ Your Choice' : '✕ Your Choice'}</span>` : ''}
+          ${!wasChosen && isOptionCorrect ? `<span class="mcq-choice-tag correct-tag">✓ Correct Answer</span>` : ''}
+        `;
+        grid.appendChild(btn);
+      });
+
+      const chosenOpt = (historyItem.selectedIndex !== null && historyItem.selectedIndex >= 0) ? currentMcqOptions[historyItem.selectedIndex] : null;
+      const correctOpt = currentMcqOptions.find((o) => o.isCorrect);
+
+      if (historyItem.isCorrect) {
+        reviewBanner.className = "review-banner is-correct-banner";
+        if (bannerIcon) bannerIcon.textContent = "✓";
+        if (bannerTitle) bannerTitle.textContent = "You Answered Correctly";
+        if (bannerDetail) {
+          bannerDetail.innerHTML = `You selected <strong>Option ${chosenOpt ? chosenOpt.letter : ''}</strong>: <em>${chosenOpt ? chosenOpt.text : item.a}</em>`;
+        }
+      } else {
+        reviewBanner.className = "review-banner is-wrong-banner";
+        if (bannerIcon) bannerIcon.textContent = "✕";
+        if (bannerTitle) bannerTitle.textContent = "You Missed This Question";
+        if (bannerDetail) {
+          const chosenText = chosenOpt ? `Option ${chosenOpt.letter} (${chosenOpt.text})` : "Timed Out / Unanswered";
+          const correctText = correctOpt ? `Option ${correctOpt.letter} (${correctOpt.text})` : item.a;
+          bannerDetail.innerHTML = `<span><strong>What you clicked:</strong> ${chosenText}</span><br><span><strong>Official Correct Answer:</strong> ${correctText}</span>`;
+        }
+      }
+    } else {
+      // Flashcard Mode Review
+      el("mcq-container").hidden = true;
+      el("answer-panel").hidden = false;
+
+      if (historyItem.gotItRight) {
+        reviewBanner.className = "review-banner is-correct-banner";
+        if (bannerIcon) bannerIcon.textContent = "✓";
+        if (bannerTitle) bannerTitle.textContent = "You Marked: Got It Right";
+        if (bannerDetail) {
+          bannerDetail.innerHTML = `<strong>Official Answer:</strong> ${item.a}`;
+        }
+      } else {
+        reviewBanner.className = "review-banner is-wrong-banner";
+        if (bannerIcon) bannerIcon.textContent = "✕";
+        if (bannerTitle) bannerTitle.textContent = "You Marked: Missed";
+        if (bannerDetail) {
+          bannerDetail.innerHTML = `<strong>Official Answer:</strong> ${item.a}`;
+        }
+      }
+    }
+  }
+
+  // --- Render Live Question (Active Answering Mode) ---
+  function renderLiveQuestion(item) {
+    // Hide review elements
+    const reviewBanner = el("review-banner");
+    const reviewActionRow = el("review-action-row");
+    if (reviewBanner) reviewBanner.hidden = true;
+    if (reviewActionRow) reviewActionRow.hidden = true;
+
+    // Format-specific rendering
+    if (selectedFormat === "mcq") {
+      el("mcq-container").hidden = false;
+      el("card-prompt").hidden = true;
+      el("answer-panel").hidden = true;
+      el("reveal-btn").hidden = true;
+      el("verdict-row").hidden = true;
+
+      renderMcqGrid(item);
+    } else {
+      el("mcq-container").hidden = true;
+      el("card-prompt").hidden = false;
+      el("answer-panel").hidden = true;
+      el("reveal-btn").hidden = false;
+      el("verdict-row").hidden = true;
+
+      setTimeout(() => {
+        const revealBtn = el("reveal-btn");
+        if (revealBtn && !revealBtn.hidden) revealBtn.focus();
+      }, 50);
+    }
 
     // Start countdown timer if configured
     if (timerDuration > 0) {
@@ -676,6 +814,55 @@
     } else {
       const timerDisplay = el("timer-display");
       if (timerDisplay) timerDisplay.hidden = true;
+    }
+  }
+
+  // --- Update Navigation Buttons & Status Indicators ---
+  function updateNavControls(isReviewed) {
+    const prevBtn = el("prev-btn");
+    const nextBtn = el("next-btn");
+    const statusBadge = el("nav-status-badge");
+    const statusText = el("nav-status-text");
+
+    // Previous Button: active whenever idx > 0
+    if (prevBtn) {
+      prevBtn.disabled = idx <= 0;
+      prevBtn.classList.toggle("is-disabled", idx <= 0);
+    }
+
+    // Top Navigation Next Button & Review Badge
+    if (isReviewed) {
+      if (statusBadge) {
+        statusBadge.hidden = false;
+        if (statusText) statusText.textContent = `REVIEWING Q${idx + 1} OF ${pool.length}`;
+      }
+      if (nextBtn) {
+        nextBtn.hidden = false;
+        nextBtn.disabled = false;
+      }
+    } else {
+      if (statusBadge) statusBadge.hidden = true;
+      if (nextBtn) nextBtn.hidden = true;
+    }
+  }
+
+  // --- Navigation Handlers ---
+  function handlePrevQuestion() {
+    if (idx > 0 && !isTransitioning) {
+      stopTimer();
+      idx--;
+      showQuestion();
+    }
+  }
+
+  function handleNextQuestion() {
+    if (isTransitioning) return;
+    stopTimer();
+    if (idx < pool.length - 1) {
+      idx++;
+      showQuestion();
+    } else if (idx === pool.length - 1 && sessionHistory[idx] && sessionHistory[idx].answered) {
+      endSession();
     }
   }
 
@@ -714,7 +901,24 @@
 
     const selectedOpt = currentMcqOptions[selectedIndex];
     const currentItem = pool[idx];
-    const isCorrect = selectedOpt && selectedOpt.isCorrect;
+    const isCorrect = Boolean(selectedOpt && selectedOpt.isCorrect);
+
+    // Save to sessionHistory for instant and future back-navigation review
+    sessionHistory[idx] = {
+      answered: true,
+      format: "mcq",
+      mcqOptions: [...currentMcqOptions],
+      selectedIndex: selectedIndex,
+      isCorrect: isCorrect,
+      item: currentItem
+    };
+
+    maxAnsweredIdx = Math.max(maxAnsweredIdx, idx + 1);
+
+    // Track category round stats
+    if (currentItem.categoryId) {
+      roundTotalByCat[currentItem.categoryId] = (roundTotalByCat[currentItem.categoryId] || 0) + 1;
+    }
 
     // Disable all option buttons
     const allBtns = qAll(".mcq-btn");
@@ -797,6 +1001,21 @@
     stopTimer();
 
     const currentItem = pool[idx];
+
+    // Save to sessionHistory for back-navigation review
+    sessionHistory[idx] = {
+      answered: true,
+      format: "flashcard",
+      gotItRight: gotItRight,
+      item: currentItem
+    };
+
+    maxAnsweredIdx = Math.max(maxAnsweredIdx, idx + 1);
+
+    // Track category participation
+    if (currentItem.categoryId) {
+      roundTotalByCat[currentItem.categoryId] = (roundTotalByCat[currentItem.categoryId] || 0) + 1;
+    }
 
     // Save statistics & round tracking
     if (gotItRight) {
@@ -881,13 +1100,13 @@
     // When time expires:
     if (selectedFormat === "mcq") {
       // In MCQ mode: automatically mark wrong if not answered
-      if (!hasAnsweredCurrent) {
+      if (!hasAnsweredCurrent && (!sessionHistory[idx] || !sessionHistory[idx].answered)) {
         const correctIdx = currentMcqOptions.findIndex((o) => o.isCorrect);
         handleMcqSelection(correctIdx === 0 ? 1 : 0); // Pick a wrong answer to register missed
       }
     } else {
       // In Flashcard mode: reveal answer and flash card border
-      if (!isAnswerRevealed) {
+      if (!isAnswerRevealed && (!sessionHistory[idx] || !sessionHistory[idx].answered)) {
         revealAnswer();
         const card = el("quiz-card");
         if (card) {
@@ -1114,8 +1333,28 @@
       const sessionVisible = !el("session").hidden;
       if (!sessionVisible) return;
 
-      // MCQ MODE SHORTCUTS (1, 2, 3, 4 or A, B, C, D)
-      if (selectedFormat === "mcq") {
+      // PREVIOUS QUESTION SHORTCUT (P or ArrowUp or Alt+ArrowLeft)
+      if ((e.key === "p" || e.key === "P" || e.key === "ArrowUp" || (e.altKey && e.key === "ArrowLeft")) && !isTransitioning) {
+        if (idx > 0) {
+          e.preventDefault();
+          handlePrevQuestion();
+          return;
+        }
+      }
+
+      const isReviewed = Boolean(sessionHistory[idx] && sessionHistory[idx].answered);
+
+      // In Review Mode: N, Space, Enter, or ArrowRight advances forward
+      if (isReviewed && !isTransitioning) {
+        if (e.key === "n" || e.key === "N" || e.code === "Space" || e.key === " " || e.key === "Enter" || e.key === "ArrowRight") {
+          e.preventDefault();
+          handleNextQuestion();
+          return;
+        }
+      }
+
+      // MCQ MODE SHORTCUTS (1, 2, 3, 4 or A, B, C, D) - only in active live mode
+      if (selectedFormat === "mcq" && !isReviewed) {
         const key = e.key.toLowerCase();
         let selectedIndex = -1;
 
@@ -1131,8 +1370,8 @@
         }
       }
 
-      // FLASHCARD MODE SHORTCUTS
-      if (selectedFormat === "flashcard") {
+      // FLASHCARD MODE SHORTCUTS - only in active live mode
+      if (selectedFormat === "flashcard" && !isReviewed) {
         // Space or Enter -> Reveal Answer
         if ((e.code === "Space" || e.key === " " || e.key === "Enter") && !isAnswerRevealed && !isTransitioning) {
           e.preventDefault();
@@ -1163,6 +1402,31 @@
     setupKeyboardShortcuts();
     setupCardTap();
     setupSwipeGestures();
+
+    // Previous & Next Navigation Buttons
+    const prevBtn = el("prev-btn");
+    if (prevBtn) {
+      prevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handlePrevQuestion();
+      });
+    }
+
+    const nextBtn = el("next-btn");
+    if (nextBtn) {
+      nextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleNextQuestion();
+      });
+    }
+
+    const reviewNextBtn = el("review-next-btn");
+    if (reviewNextBtn) {
+      reviewNextBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleNextQuestion();
+      });
+    }
 
     // Start Session
     el("start-btn").addEventListener("click", () => startSession());

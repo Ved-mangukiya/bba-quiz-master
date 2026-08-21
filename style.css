@@ -921,6 +921,171 @@ main.dev-page-main {
 }
 
 /* ==========================================================================
+   SESSION NAVIGATION & REVIEW BAR (PREVIOUS / NEXT QUESTION CONTROLS)
+   ========================================================================== */
+.session-nav-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.6rem;
+  margin-bottom: -0.25rem;
+}
+
+.btn-nav {
+  background: var(--ink-surface);
+  border: 1px solid var(--gold-border);
+  color: var(--paper);
+  border-radius: var(--radius-sm);
+  padding: 0.45rem 0.85rem;
+  font-family: var(--font-mono);
+  font-size: clamp(0.72rem, 1.5vw, 0.8rem);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 38px;
+  transition: all 0.15s ease;
+  user-select: none;
+}
+
+.btn-nav:hover:not(:disabled) {
+  background: var(--gold);
+  color: #08101a;
+  border-color: var(--gold-bright);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(212, 175, 55, 0.25);
+}
+
+.btn-nav:hover:not(:disabled) .kbd-key {
+  background: rgba(0, 0, 0, 0.25);
+  color: #08101a;
+}
+
+.btn-nav:disabled,
+.btn-nav.is-disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  border-color: var(--line);
+  background: transparent;
+  color: var(--paper-faint);
+  box-shadow: none;
+  transform: none;
+}
+
+.btn-nav-arrow {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.nav-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  background: var(--gold-surface);
+  border: 1px solid var(--gold-border);
+  color: var(--gold-bright);
+  padding: 0.35rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.nav-status-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-bright);
+  animation: pulse-dot 1.2s infinite ease-in-out;
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 0.4; transform: scale(0.9); }
+  50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Review Mode Question Banner */
+.review-banner {
+  border-radius: var(--radius-sm);
+  padding: clamp(0.75rem, 1.8vw, 1rem) clamp(0.85rem, 2vw, 1.2rem);
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  animation: answer-reveal 0.25s cubic-bezier(0.2, 0.9, 0.3, 1) forwards;
+}
+
+.review-banner.is-correct-banner {
+  background: var(--answer-box-bg);
+  border: 1px solid var(--answer-box-border);
+  border-left: 4px solid var(--mint);
+  color: var(--answer-box-text);
+}
+
+.review-banner.is-wrong-banner {
+  background: rgba(226, 78, 36, 0.08);
+  border: 1px solid rgba(226, 78, 36, 0.3);
+  border-left: 4px solid var(--coral);
+  color: var(--card-text);
+}
+
+.review-banner-header {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-family: var(--font-mono);
+  font-weight: 700;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.is-correct-banner .review-banner-header {
+  color: var(--mint);
+}
+
+.is-wrong-banner .review-banner-header {
+  color: var(--coral);
+}
+
+.review-banner-detail {
+  font-family: var(--font-body);
+  font-size: clamp(0.88rem, 1.8vw, 0.96rem);
+  margin: 0;
+  line-height: 1.45;
+}
+
+/* MCQ Option Badge for Previous Answers */
+.mcq-choice-tag {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  padding: 0.15rem 0.45rem;
+  border-radius: 2px;
+  background: rgba(0, 0, 0, 0.2);
+  color: inherit;
+  margin-left: auto;
+  flex-shrink: 0;
+}
+
+.mcq-choice-tag.correct-tag {
+  background: var(--mint);
+  color: #ffffff;
+}
+
+/* Review Action Row (Continue / Next Question Button) */
+.review-action-row {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  width: 100%;
+}
+
+/* ==========================================================================
    FLASHCARD & QUESTION PRESENTATION
    ========================================================================== */
 .card-wrapper {

@@ -187,6 +187,26 @@
         </div>
       </div>
 
+      <!-- Navigation Bar (Previous Question / Review Status / Next Question) -->
+      <div class="session-nav-bar" id="session-nav-bar">
+        <button id="prev-btn" class="btn-nav" type="button" aria-label="Go back to previous question" title="Previous Question (Hotkey: P or Left Arrow)" disabled>
+          <span class="btn-nav-arrow" aria-hidden="true">&larr;</span>
+          <span>Previous Question</span>
+          <span class="kbd-key desktop-only">P</span>
+        </button>
+
+        <div class="nav-status-badge" id="nav-status-badge" hidden>
+          <span class="nav-status-dot"></span>
+          <span id="nav-status-text">REVIEWING QUESTION</span>
+        </div>
+
+        <button id="next-btn" class="btn-nav" type="button" aria-label="Go to next question" title="Next Question (Hotkey: N, Space, or Right Arrow)" hidden>
+          <span>Next Question</span>
+          <span class="btn-nav-arrow" aria-hidden="true">&rarr;</span>
+          <span class="kbd-key desktop-only">N</span>
+        </button>
+      </div>
+
       <!-- Question Card Container -->
       <div class="card-wrapper">
         <div class="card" id="quiz-card" tabindex="0" role="region" aria-label="Question Card">
@@ -201,6 +221,15 @@
             </div>
             
             <p class="card-question" id="card-question">Loading…</p>
+
+            <!-- Review Verdict Banner (Shown when viewing an already answered question) -->
+            <div class="review-banner" id="review-banner" hidden>
+              <div class="review-banner-header">
+                <span class="review-banner-icon" id="review-banner-icon">✓</span>
+                <span class="review-banner-title" id="review-banner-title">You answered correctly</span>
+              </div>
+              <div class="review-banner-detail" id="review-banner-detail"></div>
+            </div>
             
             <!-- MCQ 4-Option Grid (Displayed in MCQ mode) -->
             <div class="mcq-container" id="mcq-container" hidden>
@@ -225,6 +254,15 @@
 
       <!-- Action Buttons & Interaction Row -->
       <div class="action-row">
+        <!-- Review Action Controls (Shown when viewing a previously answered question) -->
+        <div class="review-action-row" id="review-action-row" hidden>
+          <button id="review-next-btn" class="btn-primary" type="button">
+            <span id="review-next-btn-text">Continue to Next Question</span>
+            <span class="btn-arrow">&rarr;</span>
+            <span class="kbd-key desktop-only">Space / N</span>
+          </button>
+        </div>
+
         <!-- Flashcard Reveal Button -->
         <button id="reveal-btn" class="btn-outline" type="button" hidden>
           <span>👁️ Reveal Official Answer</span>
@@ -250,6 +288,8 @@
           <!-- Desktop Hints for MCQ Mode -->
           <div class="desktop-hints desktop-only" id="mcq-desktop-hints" aria-hidden="true" hidden>
             <span class="hint-item">Press <kbd>1</kbd> <kbd>2</kbd> <kbd>3</kbd> <kbd>4</kbd> or <kbd>A</kbd> <kbd>B</kbd> <kbd>C</kbd> <kbd>D</kbd> to pick answer</span>
+            <span class="hint-divider">&bull;</span>
+            <span class="hint-item"><kbd>P</kbd> Previous</span>
           </div>
           <!-- Desktop Hints for Flashcard Mode -->
           <div class="desktop-hints desktop-only" id="flash-desktop-hints" aria-hidden="true" hidden>
@@ -258,6 +298,8 @@
             <span class="hint-item"><kbd>&larr;</kbd> Missed</span>
             <span class="hint-divider">&bull;</span>
             <span class="hint-item"><kbd>&rarr;</kbd> Correct</span>
+            <span class="hint-divider">&bull;</span>
+            <span class="hint-item"><kbd>P</kbd> Previous</span>
           </div>
           <!-- Mobile Hints -->
           <div class="mobile-hints mobile-only" id="mobile-hints" aria-hidden="true">
