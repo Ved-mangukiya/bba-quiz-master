@@ -45,6 +45,36 @@
   <main id="main-content">
     <!-- START / CONTROL DECK -->
     <section class="control-deck" id="control-deck" aria-label="Quiz Configuration">
+      <!-- Active Practice Session / Resume Card (shown dynamically if unfinished session exists) -->
+      <div id="resume-session-card" class="resume-card" hidden>
+        <div class="resume-card-header">
+          <div class="resume-tag-wrap">
+            <span class="resume-tag">SAVED PRACTICE SESSION</span>
+            <span class="resume-badge" id="resume-board-tag">All Boards</span>
+            <span class="resume-badge format" id="resume-format-tag">4-Option MCQ</span>
+          </div>
+          <span class="resume-time" id="resume-time-text">Saved recently</span>
+        </div>
+        <div class="resume-card-body">
+          <div class="resume-headline-wrap">
+            <h2 class="resume-headline" id="resume-headline">In-Progress Quiz Saved</h2>
+            <p class="resume-stats-line" id="resume-stats-line">Question 1 of 600 &bull; 0 Correct &bull; 0 Missed</p>
+          </div>
+          <div class="resume-progress-track">
+            <div class="resume-progress-fill" id="resume-progress-fill" style="width: 0%;"></div>
+          </div>
+        </div>
+        <div class="resume-card-actions">
+          <button type="button" id="resume-btn" class="btn-primary resume-btn-main">
+            <span>▶️ Resume Practice (at Question <span id="resume-q-num">1</span>)</span>
+            <span class="btn-arrow">&rarr;</span>
+          </button>
+          <button type="button" id="discard-session-btn" class="btn-outline discard-btn">
+            <span>🗑️ Discard &amp; Start Fresh</span>
+          </button>
+        </div>
+      </div>
+
       <!-- Weak categories alert (populated dynamically if stats exist) -->
       <div id="weak-categories-card" class="weak-card" hidden>
         <div class="weak-card-header">
@@ -187,21 +217,39 @@
         </div>
       </div>
 
-      <!-- Navigation Bar (Previous Question / Review Status / Next Question) -->
+      <!-- Navigation Bar (Previous Question / Navigator / Quick Jump / Review Status / Next Question) -->
       <div class="session-nav-bar" id="session-nav-bar">
         <button id="prev-btn" class="btn-nav" type="button" aria-label="Go back to previous question" title="Previous Question (Hotkey: P or Left Arrow)" disabled>
           <span class="btn-nav-arrow" aria-hidden="true">&larr;</span>
-          <span>Previous Question</span>
+          <span>Previous</span>
           <span class="kbd-key desktop-only">P</span>
         </button>
 
-        <div class="nav-status-badge" id="nav-status-badge" hidden>
-          <span class="nav-status-dot"></span>
-          <span id="nav-status-text">REVIEWING QUESTION</span>
+        <div class="nav-center-group">
+          <!-- Question Navigator Matrix Trigger -->
+          <button id="open-navigator-btn" class="btn-navigator" type="button" aria-label="Open Question Matrix Navigator" title="Open Question Matrix (Hotkey: J)">
+            <span class="nav-icon" aria-hidden="true">📋</span>
+            <span>Navigator</span>
+            <span class="kbd-key desktop-only">J</span>
+          </button>
+
+          <!-- Quick Jump by Sr No -->
+          <div class="quick-jump-wrap" title="Direct Jump to Question Serial Number">
+            <span class="quick-jump-label desktop-only">Go to:</span>
+            <input type="number" id="quick-jump-input" class="quick-jump-input" min="1" inputmode="numeric" pattern="[0-9]*" placeholder="Sr #" aria-label="Go to question serial number" />
+            <button type="button" id="quick-jump-btn" class="quick-jump-btn" title="Jump to question">
+              <span>&rarr;</span>
+            </button>
+          </div>
+
+          <div class="nav-status-badge" id="nav-status-badge" hidden>
+            <span class="nav-status-dot"></span>
+            <span id="nav-status-text">REVIEWING QUESTION</span>
+          </div>
         </div>
 
         <button id="next-btn" class="btn-nav" type="button" aria-label="Go to next question" title="Next Question (Hotkey: N, Space, or Right Arrow)" hidden>
-          <span>Next Question</span>
+          <span>Next</span>
           <span class="btn-nav-arrow" aria-hidden="true">&rarr;</span>
           <span class="kbd-key desktop-only">N</span>
         </button>
@@ -216,8 +264,17 @@
 
           <div class="card-content" id="card-content">
             <div class="card-meta">
-              <span class="card-kicker" id="card-kicker">QUESTION</span>
-              <span class="card-badge" id="card-category-badge">Board</span>
+              <div class="card-meta-left">
+                <span class="card-kicker" id="card-kicker">QUESTION</span>
+                <span class="card-badge" id="card-category-badge">Board</span>
+              </div>
+              <div class="card-meta-right">
+                <button type="button" id="bookmark-btn" class="btn-bookmark" aria-label="Flag question for review" title="Flag/Bookmark Question (Hotkey: B)">
+                  <span class="bookmark-icon" aria-hidden="true">🔖</span>
+                  <span class="bookmark-text">Flag</span>
+                  <span class="kbd-key desktop-only">B</span>
+                </button>
+              </div>
             </div>
             
             <p class="card-question" id="card-question">Loading…</p>
@@ -312,6 +369,29 @@
       <div class="session-footer">
         <button id="end-btn" class="btn-ghost" type="button">End Session Early</button>
       </div>
+
+      <!-- Mobile Quick-Action Floating Dock (Thumb-friendly navigation on phones) -->
+      <nav class="mobile-bottom-dock mobile-only" aria-label="Mobile Quiz Quick Navigation">
+        <button id="mobile-prev-btn" class="dock-btn" type="button" aria-label="Previous question" disabled>
+          <span class="dock-icon">◀</span>
+          <span class="dock-label">Prev</span>
+        </button>
+
+        <button id="mobile-navigator-btn" class="dock-btn dock-btn-main" type="button" aria-label="Open Question Matrix Navigator">
+          <span class="dock-icon">📋</span>
+          <span class="dock-label" id="mobile-nav-progress">Matrix (Q 1)</span>
+        </button>
+
+        <button id="mobile-bookmark-btn" class="dock-btn" type="button" aria-label="Flag current question">
+          <span class="dock-icon" id="mobile-bookmark-icon">🔖</span>
+          <span class="dock-label" id="mobile-bookmark-text">Flag</span>
+        </button>
+
+        <button id="mobile-next-unanswered-btn" class="dock-btn" type="button" aria-label="Jump to next unanswered question">
+          <span class="dock-icon">⏩</span>
+          <span class="dock-label">Next Q</span>
+        </button>
+      </nav>
     </section>
 
     <!-- SESSION SUMMARY SCREEN -->
@@ -354,6 +434,81 @@
         </button>
       </div>
     </section>
+
+    <!-- QUESTION MATRIX & NAVIGATOR MODAL -->
+    <div id="question-navigator-modal" class="modal-backdrop" hidden aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="navigator-modal-title">
+      <div class="modal-dialog">
+        <!-- Mobile Bottom-Sheet Pull Handle -->
+        <div class="modal-drag-handle mobile-only" aria-hidden="true"></div>
+
+        <div class="modal-header">
+          <div class="modal-title-group">
+            <span class="modal-kicker">QUESTION MATRIX &amp; DIRECT JUMP</span>
+            <h2 id="navigator-modal-title" class="modal-title">Question Navigator</h2>
+          </div>
+          <button type="button" id="close-navigator-btn" class="modal-close-btn" aria-label="Close Question Navigator (Esc)" title="Close (Esc)">✕</button>
+        </div>
+        
+        <div class="modal-body">
+          <!-- Fast Numeric Jump Input Bar -->
+          <div class="modal-search-bar">
+            <div class="search-input-wrap">
+              <span class="search-icon" aria-hidden="true">🎯</span>
+              <input type="number" id="modal-jump-input" class="modal-jump-input" min="1" inputmode="numeric" pattern="[0-9]*" placeholder="Enter Sr No (1 to 600)..." aria-label="Enter question serial number to jump" />
+              <button type="button" id="modal-jump-btn" class="btn-modal-jump">Go to Question &rarr;</button>
+            </div>
+          </div>
+
+          <!-- Status Filter Tabs -->
+          <div class="nav-filter-tabs" role="tablist" aria-label="Filter questions">
+            <button type="button" class="nav-filter-tab is-active" data-filter="all" role="tab" aria-selected="true">
+              All (<span id="nav-count-all">0</span>)
+            </button>
+            <button type="button" class="nav-filter-tab" data-filter="unanswered" role="tab" aria-selected="false">
+              ⚪ Unanswered (<span id="nav-count-unanswered">0</span>)
+            </button>
+            <button type="button" class="nav-filter-tab" data-filter="correct" role="tab" aria-selected="false">
+              ✓ Correct (<span id="nav-count-correct">0</span>)
+            </button>
+            <button type="button" class="nav-filter-tab" data-filter="missed" role="tab" aria-selected="false">
+              ✕ Missed (<span id="nav-count-missed">0</span>)
+            </button>
+            <button type="button" class="nav-filter-tab" data-filter="bookmarked" role="tab" aria-selected="false">
+              🔖 Flagged (<span id="nav-count-bookmarked">0</span>)
+            </button>
+          </div>
+
+          <!-- Status Legend -->
+          <div class="nav-legend" aria-hidden="true">
+            <span class="legend-item"><span class="legend-dot status-current"></span> Current</span>
+            <span class="legend-item"><span class="legend-dot status-correct"></span> Correct</span>
+            <span class="legend-item"><span class="legend-dot status-missed"></span> Missed</span>
+            <span class="legend-item"><span class="legend-dot status-unanswered"></span> Unanswered</span>
+            <span class="legend-item"><span class="legend-dot status-bookmarked"></span> Flagged</span>
+          </div>
+
+          <!-- Question Grid Matrix -->
+          <div class="modal-grid-container" id="modal-grid-container">
+            <div class="question-grid" id="question-grid" role="group" aria-label="Question serial numbers">
+              <!-- Dynamically populated buttons -->
+            </div>
+            <div id="grid-empty-state" class="grid-empty-state" hidden>
+              No questions found for this filter.
+            </div>
+          </div>
+        </div>
+
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button type="button" id="modal-next-unanswered-btn" class="btn-primary modal-action-btn">
+            <span>⏩ Jump to Next Unanswered</span>
+          </button>
+          <button type="button" id="modal-done-btn" class="btn-ghost">
+            Close (Esc)
+          </button>
+        </div>
+      </div>
+    </div>
   </main>
 
   <footer>

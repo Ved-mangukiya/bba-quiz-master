@@ -11,6 +11,8 @@
   // --- State & Constants ---
   const STORAGE_KEY_STATS = "bellringer_quiz_stats_v1";
   const STORAGE_KEY_THEME = "bellringer_theme_v1";
+  const STORAGE_KEY_SHUFFLE_CYCLE = "bellringer_shuffle_cycle_v1";
+  const STORAGE_KEY_ACTIVE_SESSION = "bellringer_active_session_v1";
   const TICKER_PIXELS_PER_SECOND = 42; // Constant comfortable reading velocity across all pages
 
   let DATA = null;
@@ -24,6 +26,10 @@
   let isAnswerRevealed = false;
   let isTransitioning = false;
   let hasAnsweredCurrent = false;
+
+  // Bookmarks & Navigator filter state
+  let bookmarks = new Set();
+  let currentNavFilter = "all";
 
   // Configuration state
   let selectedFormat = "mcq"; // 'mcq' (4 options) or 'flashcard' (reveal)
@@ -59,6 +65,7 @@
     await loadData();
     renderWeakCategories();
     updateLifetimeStatsSummary();
+    checkAndRenderResumeBanner();
   }
 
   // --- Theme Management ---
@@ -402,15 +409,448 @@
     }
   }
 
-  const STORAGE_KEY_SHUFFLE_CYCLE = "bellringer_shuffle_cycle_v1";
-
   function clearAllStats() {
     if (confirm("Are you sure you want to reset all saved session stats, weak category history, and shuffle queue?")) {
       localStorage.removeItem(STORAGE_KEY_STATS);
       localStorage.removeItem(STORAGE_KEY_SHUFFLE_CYCLE);
+      localStorage.removeItem(STORAGE_KEY_ACTIVE_SESSION);
+      bookmarks.clear();
       renderWeakCategories();
       updateLifetimeStatsSummary();
+      checkAndRenderResumeBanner();
     }
+  }
+
+  // --- Active Quiz Session Persistence & Next-Day Resumption ---
+  function getCategoryName(id) {
+    if (!DATA || !DATA.categories) return "All Boards";
+    if (id === "all") return "All Boards";
+    const cat = DATA.categories.find((c) => c.id === id);
+    return cat ? cat.name : "All Boards";
+  }
+
+  function getActiveSession() {
+    try {
+      const data = localStorage.getItem(STORAGE_KEY_ACTIVE_SESSION);
+      return data ? JSON.parse(data) : null;
+    } catch (e) {
+      console.warn("Could not read active session from localStorage", e);
+      return null;
+    }
+  }
+
+  function saveActiveSession() {
+    if (!pool || pool.length === 0) return;
+    try {
+      const session = {
+        version: 1,
+        savedAt: Date.now(),
+        selectedCategoryId,
+        selectedCategoryName: getCategoryName(selectedCategoryId),
+        selectedFormat,
+        selectedMode,
+        timerDuration,
+        idx,
+        maxAnsweredIdx,
+        correct,
+        missed,
+        roundTotalByCat,
+        roundMissedByCat,
+        missedPool: (missedPool || []).map((item) => ({
+          q: item.q,
+          a: item.a,
+          board: item.board,
+          categoryId: item.categoryId
+        })),
+        pool: pool.map((item) => ({
+          q: item.q,
+          a: item.a,
+          board: item.board,
+          categoryId: item.categoryId
+        })),
+        sessionHistory: sessionHistory.map((h) => {
+          if (!h) return null;
+          return {
+            answered: Boolean(h.answered),
+            format: h.format,
+            selectedIndex: h.selectedIndex !== undefined ? h.selectedIndex : null,
+            isCorrect: Boolean(h.isCorrect),
+            gotItRight: Boolean(h.gotItRight),
+            mcqOptions: h.mcqOptions ? [...h.mcqOptions] : null
+          };
+        }),
+        bookmarks: Array.from(bookmarks)
+      };
+      localStorage.setItem(STORAGE_KEY_ACTIVE_SESSION, JSON.stringify(session));
+    } catch (e) {
+      console.warn("Could not save active session to localStorage", e);
+    }
+  }
+
+  function clearActiveSession() {
+    try {
+      localStorage.removeItem(STORAGE_KEY_ACTIVE_SESSION);
+    } catch (e) {
+      console.warn("Could not clear active session from localStorage", e);
+    }
+  }
+
+  function formatTimeAgo(timestamp) {
+    if (!timestamp) return "Saved recently";
+    const date = new Date(timestamp);
+    const now = new Date();
+    const isToday = date.toDateString() === now.toDateString();
+    
+    const yesterday = new Date(now);
+    yesterday.setDate(now.getDate() - 1);
+    const isYesterday = date.toDateString() === yesterday.toDateString();
+
+    const timeStr = date.toLocaleTimeString([], { hour: "numeric", minute: "2-digit" });
+    if (isToday) return `Saved today at ${timeStr}`;
+    if (isYesterday) return `Saved yesterday at ${timeStr}`;
+    return `Saved on ${date.toLocaleDateString([], { day: "numeric", month: "short" })} at ${timeStr}`;
+  }
+
+  function checkAndRenderResumeBanner() {
+    const resumeCard = el("resume-session-card");
+    if (!resumeCard) return;
+
+    const session = getActiveSession();
+    if (!session || !Array.isArray(session.pool) || session.pool.length === 0) {
+      resumeCard.hidden = true;
+      return;
+    }
+
+    const answeredCount = (session.sessionHistory || []).filter((h) => h && h.answered).length;
+    const totalCount = session.pool.length;
+    const pct = totalCount ? Math.round((answeredCount / totalCount) * 100) : 0;
+    const accuracy = answeredCount ? Math.round((session.correct / answeredCount) * 100) : 0;
+
+    const boardTag = el("resume-board-tag");
+    const formatTag = el("resume-format-tag");
+    const timeText = el("resume-time-text");
+    const headline = el("resume-headline");
+    const statsLine = el("resume-stats-line");
+    const progressFill = el("resume-progress-fill");
+    const qNumSpan = el("resume-q-num");
+
+    if (boardTag) boardTag.textContent = session.selectedCategoryName || "All Boards";
+    if (formatTag) formatTag.textContent = session.selectedFormat === "mcq" ? "4-Option MCQ" : "Flashcard";
+    if (timeText) timeText.textContent = formatTimeAgo(session.savedAt);
+    if (headline) headline.textContent = `In-Progress Drill (${pct}% Complete)`;
+    if (statsLine) {
+      statsLine.textContent = `Question ${Math.min(session.idx + 1, totalCount)} of ${totalCount} • ${session.correct} Correct, ${session.missed} Missed (${accuracy}% Accuracy)`;
+    }
+    if (progressFill) progressFill.style.width = `${pct}%`;
+    if (qNumSpan) qNumSpan.textContent = Math.min(session.idx + 1, totalCount);
+
+    resumeCard.hidden = false;
+  }
+
+  function resumeSession() {
+    const session = getActiveSession();
+    if (!session || !Array.isArray(session.pool) || session.pool.length === 0) {
+      alert("No active saved session found.");
+      return;
+    }
+
+    stopTimer();
+
+    selectedCategoryId = session.selectedCategoryId || "all";
+    selectedFormat = session.selectedFormat || "mcq";
+    selectedMode = session.selectedMode || "shuffle";
+    timerDuration = session.timerDuration || 0;
+
+    pool = session.pool || [];
+    idx = typeof session.idx === "number" ? session.idx : 0;
+    if (idx >= pool.length) idx = pool.length - 1;
+    if (idx < 0) idx = 0;
+
+    maxAnsweredIdx = session.maxAnsweredIdx || 0;
+    correct = session.correct || 0;
+    missed = session.missed || 0;
+    roundTotalByCat = session.roundTotalByCat || {};
+    roundMissedByCat = session.roundMissedByCat || {};
+    missedPool = session.missedPool || [];
+    sessionHistory = session.sessionHistory || [];
+    bookmarks = new Set(session.bookmarks || []);
+
+    // Sync chips UI to saved config
+    syncConfigChips();
+
+    // Show session screen & hide start deck
+    el("session").hidden = false;
+    el("summary").hidden = true;
+    el("control-deck").hidden = true;
+
+    // Configure desktop/mobile hints based on format
+    if (selectedFormat === "mcq") {
+      el("mcq-desktop-hints").hidden = false;
+      el("flash-desktop-hints").hidden = true;
+      el("mobile-hint-text").textContent = "👉 Tap an option to select your answer";
+    } else {
+      el("mcq-desktop-hints").hidden = true;
+      el("flash-desktop-hints").hidden = false;
+      el("mobile-hint-text").textContent = "👉 Swipe card left for Missed, right for Correct";
+    }
+
+    window.scrollTo({ top: el("main-content").offsetTop - 20, behavior: "smooth" });
+    showQuestion();
+  }
+
+  function discardActiveSession() {
+    if (confirm("Are you sure you want to discard your saved in-progress session and start fresh?")) {
+      clearActiveSession();
+      checkAndRenderResumeBanner();
+    }
+  }
+
+  function syncConfigChips() {
+    // Format chips
+    qAll(".format-chips .chip").forEach((chip) => {
+      const match = chip.dataset.format === selectedFormat;
+      chip.classList.toggle("is-active", match);
+      chip.setAttribute("aria-checked", match ? "true" : "false");
+    });
+
+    // Mode chips
+    qAll(".mode-chips .chip").forEach((chip) => {
+      const match = chip.dataset.mode === selectedMode;
+      chip.classList.toggle("is-active", match);
+      chip.setAttribute("aria-checked", match ? "true" : "false");
+    });
+
+    // Category chips & select
+    const select = el("category-select");
+    if (select) select.value = selectedCategoryId;
+    qAll("#category-chips .chip").forEach((chip) => {
+      const match = chip.dataset.category === selectedCategoryId;
+      chip.classList.toggle("is-active", match);
+      chip.setAttribute("aria-checked", match ? "true" : "false");
+    });
+
+    // Timer chips
+    qAll(".timer-chips .chip").forEach((chip) => {
+      const match = parseInt(chip.dataset.timer, 10) === timerDuration;
+      chip.classList.toggle("is-active", match);
+      chip.setAttribute("aria-checked", match ? "true" : "false");
+    });
+  }
+
+  // --- Question Navigator & Direct Jump Controls ---
+  function jumpToQuestion(targetIndex) {
+    if (targetIndex < 0 || targetIndex >= pool.length) return;
+    if (isTransitioning) return;
+    stopTimer();
+    idx = targetIndex;
+    closeQuestionNavigator();
+    showQuestion();
+    saveActiveSession();
+  }
+
+  function handleQuickJump(value) {
+    const num = parseInt(value, 10);
+    if (isNaN(num)) return;
+    if (num < 1 || num > pool.length) {
+      alert(`Please enter a valid question number between 1 and ${pool.length}.`);
+      return;
+    }
+    jumpToQuestion(num - 1);
+  }
+
+  function toggleBookmark(targetIndex = idx) {
+    if (targetIndex < 0 || targetIndex >= pool.length) return;
+    if (bookmarks.has(targetIndex)) {
+      bookmarks.delete(targetIndex);
+    } else {
+      bookmarks.add(targetIndex);
+    }
+    updateBookmarkButton();
+    saveActiveSession();
+
+    const modal = el("question-navigator-modal");
+    if (modal && !modal.hidden) {
+      renderQuestionGrid(currentNavFilter);
+      updateNavigatorCounts();
+    }
+  }
+
+  function updateBookmarkButton() {
+    const isBookmarked = bookmarks.has(idx);
+
+    const btn = el("bookmark-btn");
+    if (btn) {
+      btn.classList.toggle("is-bookmarked", isBookmarked);
+      const textSpan = btn.querySelector(".bookmark-text");
+      if (textSpan) textSpan.textContent = isBookmarked ? "Flagged" : "Flag";
+      btn.setAttribute("aria-pressed", isBookmarked ? "true" : "false");
+    }
+
+    const mobileBtn = el("mobile-bookmark-btn");
+    if (mobileBtn) {
+      mobileBtn.classList.toggle("is-bookmarked", isBookmarked);
+      const mobileText = el("mobile-bookmark-text");
+      if (mobileText) mobileText.textContent = isBookmarked ? "Flagged" : "Flag";
+      mobileBtn.setAttribute("aria-pressed", isBookmarked ? "true" : "false");
+    }
+  }
+
+  function openQuestionNavigator(filter = "all") {
+    const modal = el("question-navigator-modal");
+    if (!modal) return;
+
+    currentNavFilter = filter;
+    modal.hidden = false;
+    modal.setAttribute("aria-hidden", "false");
+
+    // Sync active filter tab
+    qAll(".nav-filter-tab").forEach((tab) => {
+      const match = tab.dataset.filter === currentNavFilter;
+      tab.classList.toggle("is-active", match);
+      tab.setAttribute("aria-selected", match ? "true" : "false");
+    });
+
+    updateNavigatorCounts();
+    renderQuestionGrid(currentNavFilter);
+
+    // Focus search input
+    const input = el("modal-jump-input");
+    if (input) {
+      input.value = "";
+      input.max = pool.length;
+      setTimeout(() => input.focus(), 50);
+    }
+
+    // Scroll current question cell into view
+    setTimeout(() => {
+      const currentCell = document.querySelector(".grid-cell-btn.is-current");
+      if (currentCell) {
+        currentCell.scrollIntoView({ behavior: "smooth", block: "center", inline: "center" });
+      }
+    }, 100);
+  }
+
+  function closeQuestionNavigator() {
+    const modal = el("question-navigator-modal");
+    if (!modal) return;
+    modal.hidden = true;
+    modal.setAttribute("aria-hidden", "true");
+  }
+
+  function updateNavigatorCounts() {
+    let correctCount = 0;
+    let missedCount = 0;
+    let answeredCount = 0;
+
+    sessionHistory.forEach((h) => {
+      if (h && h.answered) {
+        answeredCount++;
+        if (h.isCorrect || h.gotItRight) {
+          correctCount++;
+        } else {
+          missedCount++;
+        }
+      }
+    });
+
+    const unansweredCount = Math.max(0, pool.length - answeredCount);
+    const bookmarkedCount = bookmarks.size;
+
+    const countAll = el("nav-count-all");
+    const countUnanswered = el("nav-count-unanswered");
+    const countCorrect = el("nav-count-correct");
+    const countMissed = el("nav-count-missed");
+    const countBookmarked = el("nav-count-bookmarked");
+
+    if (countAll) countAll.textContent = pool.length;
+    if (countUnanswered) countUnanswered.textContent = unansweredCount;
+    if (countCorrect) countCorrect.textContent = correctCount;
+    if (countMissed) countMissed.textContent = missedCount;
+    if (countBookmarked) countBookmarked.textContent = bookmarkedCount;
+  }
+
+  function renderQuestionGrid(filter = "all") {
+    const grid = el("question-grid");
+    const emptyState = el("grid-empty-state");
+    if (!grid) return;
+
+    grid.innerHTML = "";
+    let visibleCount = 0;
+
+    pool.forEach((item, i) => {
+      const hist = sessionHistory[i];
+      const isAnswered = Boolean(hist && hist.answered);
+      const isCorrect = Boolean(hist && (hist.isCorrect || hist.gotItRight));
+      const isMissed = Boolean(hist && hist.answered && !isCorrect);
+      const isCurrent = (i === idx);
+      const isBookmarked = bookmarks.has(i);
+
+      // Filtering logic
+      if (filter === "unanswered" && isAnswered) return;
+      if (filter === "correct" && !isCorrect) return;
+      if (filter === "missed" && !isMissed) return;
+      if (filter === "bookmarked" && !isBookmarked) return;
+
+      visibleCount++;
+
+      const btn = document.createElement("button");
+      btn.type = "button";
+      btn.className = "grid-cell-btn";
+      btn.dataset.index = i;
+      btn.textContent = `${i + 1}`;
+
+      if (isCurrent) btn.classList.add("is-current");
+      if (isCorrect) btn.classList.add("is-correct");
+      else if (isMissed) btn.classList.add("is-missed");
+      else btn.classList.add("is-unanswered");
+
+      if (isBookmarked) btn.classList.add("is-bookmarked");
+
+      let statusLabel = isCurrent ? "Current Question" : (isCorrect ? "Correct" : (isMissed ? "Missed" : "Unanswered"));
+      if (isBookmarked) statusLabel += ", Flagged";
+      btn.setAttribute("aria-label", `Question ${i + 1}: ${statusLabel}`);
+      btn.title = `Question ${i + 1} (${statusLabel})`;
+
+      btn.addEventListener("click", () => {
+        jumpToQuestion(i);
+      });
+
+      grid.appendChild(btn);
+    });
+
+    if (emptyState) {
+      emptyState.hidden = visibleCount > 0;
+    }
+  }
+
+  function jumpToNextUnanswered() {
+    if (!pool || pool.length === 0) return;
+
+    // 1. Search forward from idx + 1 to pool.length - 1
+    for (let i = idx + 1; i < pool.length; i++) {
+      const hist = sessionHistory[i];
+      if (!hist || !hist.answered) {
+        jumpToQuestion(i);
+        return;
+      }
+    }
+
+    // 2. Wrap around from 0 to idx - 1
+    for (let i = 0; i < idx; i++) {
+      const hist = sessionHistory[i];
+      if (!hist || !hist.answered) {
+        jumpToQuestion(i);
+        return;
+      }
+    }
+
+    // 3. If current question itself is unanswered, stay on it
+    if (!sessionHistory[idx] || !sessionHistory[idx].answered) {
+      closeQuestionNavigator();
+      return;
+    }
+
+    alert("Outstanding! You have answered all questions in this session.");
   }
 
   // --- Session Logic ---
@@ -576,6 +1016,7 @@
     roundTotalByCat = {};
     isTransitioning = false;
     sessionHistory = [];
+    bookmarks = new Set();
     maxAnsweredIdx = 0;
 
     // Show session screen & hide start deck
@@ -598,6 +1039,7 @@
     window.scrollTo({ top: el("main-content").offsetTop - 20, behavior: "smooth" });
 
     showQuestion();
+    saveActiveSession();
   }
 
   function showQuestion() {
@@ -615,8 +1057,16 @@
     const historyItem = sessionHistory[idx];
     const isReviewed = Boolean(historyItem && historyItem.answered);
 
-    // Update navigation controls state
+    // Update navigation controls state & bookmark button
     updateNavControls(isReviewed);
+    updateBookmarkButton();
+
+    // Update quick jump input placeholder
+    const quickJumpInput = el("quick-jump-input");
+    if (quickJumpInput) {
+      quickJumpInput.placeholder = `${idx + 1}`;
+      quickJumpInput.max = pool.length;
+    }
 
     // Update text & layout
     el("card-question").textContent = item.q;
@@ -663,6 +1113,9 @@
     card.classList.remove("card-slide-in", "card-verdict-right", "card-verdict-wrong");
     void card.offsetWidth; // Trigger reflow for animation restart
     card.classList.add("card-slide-in");
+
+    // Persist current position
+    saveActiveSession();
   }
 
   // --- Render Answered / Historical Question (Review Mode) ---
@@ -824,10 +1277,21 @@
     const statusBadge = el("nav-status-badge");
     const statusText = el("nav-status-text");
 
-    // Previous Button: active whenever idx > 0
+    // Previous Buttons: active whenever idx > 0
     if (prevBtn) {
       prevBtn.disabled = idx <= 0;
       prevBtn.classList.toggle("is-disabled", idx <= 0);
+    }
+
+    const mobilePrevBtn = el("mobile-prev-btn");
+    if (mobilePrevBtn) {
+      mobilePrevBtn.disabled = idx <= 0;
+      mobilePrevBtn.classList.toggle("is-disabled", idx <= 0);
+    }
+
+    const mobileProgress = el("mobile-nav-progress");
+    if (mobileProgress && pool) {
+      mobileProgress.textContent = `Matrix (Q ${idx + 1})`;
     }
 
     // Top Navigation Next Button & Review Badge
@@ -852,6 +1316,7 @@
       stopTimer();
       idx--;
       showQuestion();
+      saveActiveSession();
     }
   }
 
@@ -861,6 +1326,7 @@
     if (idx < pool.length - 1) {
       idx++;
       showQuestion();
+      saveActiveSession();
     } else if (idx === pool.length - 1 && sessionHistory[idx] && sessionHistory[idx].answered) {
       endSession();
     }
@@ -932,6 +1398,7 @@
       el("correct-count").textContent = correct;
       saveQuestionResult(currentItem.categoryId, true);
       advanceShuffleQueue();
+      saveActiveSession();
 
       // Card micro-interaction
       const card = el("quiz-card");
@@ -954,6 +1421,7 @@
       }
       saveQuestionResult(currentItem.categoryId, false);
       advanceShuffleQueue();
+      saveActiveSession();
 
       // Reveal the true correct answer button
       const correctIdx = currentMcqOptions.findIndex((o) => o.isCorrect);
@@ -1032,6 +1500,7 @@
       saveQuestionResult(currentItem.categoryId, gotItRight);
     }
     advanceShuffleQueue();
+    saveActiveSession();
 
     // Micro-interaction animation
     const card = el("quiz-card");
@@ -1124,6 +1593,8 @@
     el("summary").hidden = false;
     el("control-deck").hidden = true;
 
+    clearActiveSession();
+
     const total = correct + missed;
     const pct = total ? Math.round((correct / total) * 100) : 0;
 
@@ -1170,6 +1641,7 @@
     // Refresh weak categories radar for future sessions
     renderWeakCategories();
     updateLifetimeStatsSummary();
+    checkAndRenderResumeBanner();
 
     // Scroll to top of summary
     window.scrollTo({ top: el("main-content").offsetTop - 20, behavior: "smooth" });
@@ -1209,6 +1681,7 @@
     el("summary").hidden = true;
     renderWeakCategories();
     updateLifetimeStatsSummary();
+    checkAndRenderResumeBanner();
   }
 
   // --- Card Tap to Reveal (Flashcard Mode Only) ---
@@ -1294,7 +1767,6 @@
     const handleTouchEnd = () => {
       if (!isDraggingCard) return;
       isDraggingCard = false;
-
       const deltaX = currentTouchX - touchStartX;
       const deltaY = currentTouchY - touchStartY;
 
@@ -1326,12 +1798,39 @@
   // --- Global Keyboard Shortcuts ---
   function setupKeyboardShortcuts() {
     window.addEventListener("keydown", (e) => {
-      // Avoid firing shortcuts when user is typing in form controls
+      // Escape closes open Navigator modal
+      if (e.key === "Escape") {
+        const modal = el("question-navigator-modal");
+        if (modal && !modal.hidden) {
+          e.preventDefault();
+          closeQuestionNavigator();
+          return;
+        }
+      }
+
+      // Avoid firing shortcuts when user is typing in inputs or textareas
       const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : "";
       if (activeTag === "input" || activeTag === "textarea") return;
 
       const sessionVisible = !el("session").hidden;
       if (!sessionVisible) return;
+
+      // J or G -> Open Question Navigator Matrix
+      if ((e.key === "j" || e.key === "J" || e.key === "g" || e.key === "G") && !isTransitioning) {
+        const modal = el("question-navigator-modal");
+        if (!modal || modal.hidden) {
+          e.preventDefault();
+          openQuestionNavigator("all");
+          return;
+        }
+      }
+
+      // B -> Flag / Bookmark Question
+      if ((e.key === "b" || e.key === "B") && !isTransitioning) {
+        e.preventDefault();
+        toggleBookmark();
+        return;
+      }
 
       // PREVIOUS QUESTION SHORTCUT (P or ArrowUp or Alt+ArrowLeft)
       if ((e.key === "p" || e.key === "P" || e.key === "ArrowUp" || (e.altKey && e.key === "ArrowLeft")) && !isTransitioning) {
@@ -1425,6 +1924,146 @@
       reviewNextBtn.addEventListener("click", (e) => {
         e.stopPropagation();
         handleNextQuestion();
+      });
+    }
+
+    // Resume Drill & Discard Session
+    const resumeBtn = el("resume-btn");
+    if (resumeBtn) {
+      resumeBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        resumeSession();
+      });
+    }
+
+    const discardBtn = el("discard-session-btn");
+    if (discardBtn) {
+      discardBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        discardActiveSession();
+      });
+    }
+
+    // Question Navigator Matrix Open / Close / Filter
+    const openNavBtn = el("open-navigator-btn");
+    if (openNavBtn) {
+      openNavBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openQuestionNavigator("all");
+      });
+    }
+
+    const closeNavBtn = el("close-navigator-btn");
+    if (closeNavBtn) {
+      closeNavBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeQuestionNavigator();
+      });
+    }
+
+    const doneNavBtn = el("modal-done-btn");
+    if (doneNavBtn) {
+      doneNavBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        closeQuestionNavigator();
+      });
+    }
+
+    const nextUnansweredBtn = el("modal-next-unanswered-btn");
+    if (nextUnansweredBtn) {
+      nextUnansweredBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        jumpToNextUnanswered();
+      });
+    }
+
+    // Filter tab buttons
+    qAll(".nav-filter-tab").forEach((tab) => {
+      tab.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openQuestionNavigator(tab.dataset.filter);
+      });
+    });
+
+    // Close modal on outside click
+    const navModal = el("question-navigator-modal");
+    if (navModal) {
+      navModal.addEventListener("click", (e) => {
+        if (e.target === navModal) closeQuestionNavigator();
+      });
+    }
+
+    // Bookmark / Flag button
+    const bookmarkBtn = el("bookmark-btn");
+    if (bookmarkBtn) {
+      bookmarkBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleBookmark();
+      });
+    }
+
+    // Quick Jump Serial Number Controls
+    const quickJumpBtn = el("quick-jump-btn");
+    const quickJumpInput = el("quick-jump-input");
+    if (quickJumpBtn && quickJumpInput) {
+      quickJumpBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleQuickJump(quickJumpInput.value);
+      });
+      quickJumpInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          handleQuickJump(quickJumpInput.value);
+        }
+      });
+    }
+
+    // Modal Search / Jump Controls
+    const modalJumpBtn = el("modal-jump-btn");
+    const modalJumpInput = el("modal-jump-input");
+    if (modalJumpBtn && modalJumpInput) {
+      modalJumpBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handleQuickJump(modalJumpInput.value);
+      });
+      modalJumpInput.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          e.preventDefault();
+          handleQuickJump(modalJumpInput.value);
+        }
+      });
+    }
+
+    // Mobile Bottom Floating Dock Actions
+    const mobilePrevBtn = el("mobile-prev-btn");
+    if (mobilePrevBtn) {
+      mobilePrevBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        handlePrevQuestion();
+      });
+    }
+
+    const mobileNavBtn = el("mobile-navigator-btn");
+    if (mobileNavBtn) {
+      mobileNavBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        openQuestionNavigator("all");
+      });
+    }
+
+    const mobileBookmarkBtn = el("mobile-bookmark-btn");
+    if (mobileBookmarkBtn) {
+      mobileBookmarkBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        toggleBookmark();
+      });
+    }
+
+    const mobileNextUnansweredBtn = el("mobile-next-unanswered-btn");
+    if (mobileNextUnansweredBtn) {
+      mobileNextUnansweredBtn.addEventListener("click", (e) => {
+        e.stopPropagation();
+        jumpToNextUnanswered();
       });
     }
 

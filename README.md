@@ -37,10 +37,23 @@ Curated and built by **Ved Mangukiya** (BBA Student, Surat, Gujarat).
 5. **Local Performance Radar**:
    - Automatically tracks accuracy across all 13 boards in `localStorage` without external telemetry. Flags boards below 75% accuracy for focused drills and provides instant "Review Missed Questions" capability.
 
-6. **Bidirectional Question Navigation & Answered State Inspection**:
-   - Seamlessly jump back to previously answered questions anytime using the **Previous Question** button (Hotkey: `P` or `ArrowUp`).
-   - Re-inspect the entire question, all multiple-choice options, exactly what you clicked (tagged with `✓ Your Choice` or `✕ Your Choice`), the highlighted official correct answer, and a clear verdict banner.
-   - Step forward seamlessly with **Next Question** (Hotkey: `N`, `Space`, or `Enter`) to return to your live round without affecting score integrity.
+6. **Direct Serial Number Navigation & Question Matrix Palette**:
+   - **Jump to Any Sr No**: Direct numeric jump bar allows hopping directly to any question (1 to 600) instantly.
+   - **Exam-Grade Question Navigator (`J` / `G`)**: Interactive modal matrix displaying all questions color-coded by status:
+     - 🟢 **Correct** (Answered Right)
+     - 🔴 **Missed** (Answered Wrong)
+     - ⚪ **Unanswered** (Pending)
+     - 🟡 **Current** (Active Question)
+     - 🔖 **Flagged** (Bookmarked for Review)
+   - **Filter Tabs & Next Unanswered**: Easily filter by Unanswered, Correct, Missed, or Flagged, with a **"⏩ Jump to Next Unanswered"** button ensuring zero missed questions.
+
+7. **Full LocalStorage Session Persistence & Next-Day Resume**:
+   - Every answer, jump, bookmark, and score update is continuously auto-saved in `localStorage`.
+   - Close the browser or return the next day—the **"Resume Saved Practice Session"** card welcomes you with exact board progress, completion percentage, and score.
+   - Jump right back in where you left off with zero data loss, or discard and start fresh anytime.
+
+8. **Question Flagging / Bookmarking (`B`)**:
+   - Flag tricky questions on the fly for targeted review in the Question Matrix before concluding your session.
 
 ---
 
