@@ -8,19 +8,20 @@ Curated and built by **Ved Mangukiya** (BBA Student, Surat, Gujarat).
 
 ## 🌟 Key Features
 
-1. **420 Curated Master Questions (Zero Duplicates)**:
+1. **600 Curated Master Questions (Zero Duplicates)**:
    - **Board 01: Business Terms & Abbreviations** (45 Questions)
-   - **Board 02: Marketing Concepts & Frameworks** (35 Questions)
-   - **Board 03: Finance, Banking & Markets** (35 Questions)
-   - **Board 04: Company Founders & Origins** (35 Questions)
-   - **Board 05: Brand Taglines & Logos** (30 Questions)
+   - **Board 02: Marketing Concepts & Frameworks** (45 Questions)
+   - **Board 03: Finance, Banking & Markets** (55 Questions)
+   - **Board 04: Company Founders & Origins** (45 Questions)
+   - **Board 05: Brand Taglines & Logos** (38 Questions)
    - **Board 06: Business Leaders & Management Theorists** (30 Questions)
-   - **Board 07: Management Principles & Operations** (25 Questions)
-   - **Board 08: Indian Economy, Policies & Institutions** (45 Questions)
-   - **Board 09: World Economics & Global Trade** (45 Questions)
-   - **Board 10: Accounting Fundamentals & Statements** (25 Questions)
-   - **Board 11: How Business Works & Applied Strategy** (25 Questions)
-   - **Board 12: General Knowledge of Business & Industry** (45 Questions)
+   - **Board 07: Management Concepts, Principles & Ops** (51 Questions)
+   - **Board 08: Indian Economy, Policies & Institutions** (55 Questions)
+   - **Board 09: World Economics & Global Trade** (53 Questions)
+   - **Board 10: Accounting Fundamentals & Statements** (35 Questions)
+   - **Board 11: How Business Works & Applied Strategy** (43 Questions)
+   - **Board 12: General Knowledge of Business & Industry** (55 Questions)
+   - **Board 13: Human Resource Management & Labour Codes** (50 Questions)
 
 2. **Dual Quiz Format Engine & Non-Repeating Shuffled Drill**:
    - **🎯 4-Option MCQ Mode (Kahoot-Style)**: Dynamically generates 4 distinct multiple-choice options (1 correct answer + 3 plausible distractors from the board). Guaranteed zero distractor duplicates. Keyboard shortcuts: `1`-`4` or `A`-`D`.
@@ -34,7 +35,7 @@ Curated and built by **Ved Mangukiya** (BBA Student, Surat, Gujarat).
    - Creator profile for **Ved Mangukiya**, event context (Amroli College organizing, SSASIT participating), and syllabus matrix overview.
 
 5. **Local Performance Radar**:
-   - Automatically tracks accuracy across all 12 boards in `localStorage` without external telemetry. Flags boards below 75% accuracy for focused drills and provides instant "Review Missed Questions" capability.
+   - Automatically tracks accuracy across all 13 boards in `localStorage` without external telemetry. Flags boards below 75% accuracy for focused drills and provides instant "Review Missed Questions" capability.
 
 ---
 

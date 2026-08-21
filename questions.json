@@ -3,6 +3,7 @@
     {
       "id": "terms",
       "name": "Business Terms & Abbreviations",
+      "syllabus_topic": "Business General Knowledge & Current Affairs",
       "questions": [
         {
           "q": "What corporate executive title designates the highest-ranking officer responsible for making major corporate decisions?",
@@ -189,6 +190,7 @@
     {
       "id": "marketing",
       "name": "Marketing Concepts",
+      "syllabus_topic": "Marketing Management",
       "questions": [
         {
           "q": "Which celebrated marketing scholar and Kellogg professor authored 'Marketing Management' and is known as the Father of Modern Marketing?",
@@ -329,12 +331,53 @@
         {
           "q": "What focused marketing approach targets a very specific, narrowly defined sub-segment of consumers who have unique specialized needs?",
           "a": "Niche Marketing"
+        },
+        {
+          "q": "What are the four elements of the traditional marketing mix?",
+          "a": "Product, Price, Place and Promotion"
+        },
+        {
+          "q": "What does STP stand for in marketing?",
+          "a": "Segmentation, Targeting and Positioning"
+        },
+        {
+          "q": "What does USP stand for?",
+          "a": "Unique Selling Proposition"
+        },
+        {
+          "q": "What does AIDA stand for?",
+          "a": "Attention, Interest, Desire and Action"
+        },
+        {
+          "q": "What is the process of dividing a broad market into smaller groups of consumers with similar characteristics called?",
+          "a": "Market Segmentation"
+        },
+        {
+          "q": "What is the process of creating a distinct image of a brand in the consumer's mind called?",
+          "a": "Brand Positioning"
+        },
+        {
+          "q": "What is the practice of promoting products through social media platforms called?",
+          "a": "Social Media Marketing"
+        },
+        {
+          "q": "What is the marketing technique of promoting products through useful and relevant content called?",
+          "a": "Content Marketing"
+        },
+        {
+          "q": "What is the term for the value and recognition a brand possesses in the minds of consumers?",
+          "a": "Brand Equity"
+        },
+        {
+          "q": "What is the process of encouraging existing customers to purchase a higher-priced or upgraded product called?",
+          "a": "Upselling"
         }
       ]
     },
     {
       "id": "finance",
       "name": "Finance & Banking Fundamentals",
+      "syllabus_topic": "Accounting & Financial Management",
       "questions": [
         {
           "q": "What capital market term describes a sustained market period characterized by rising equity prices and widespread investor optimism?",
@@ -475,12 +518,93 @@
         {
           "q": "What unlawful market malpractice involves buying or selling listed securities using confidential, material, non-public price-sensitive information?",
           "a": "Insider Trading"
+        },
+        {
+          "q": "What does ROI stand for?",
+          "a": "Return on Investment"
+        },
+        {
+          "q": "What does ROE stand for?",
+          "a": "Return on Equity"
+        },
+        {
+          "q": "What does ROCE stand for?",
+          "a": "Return on Capital Employed"
+        },
+        {
+          "q": "What is the difference between a company's current assets and current liabilities called?",
+          "a": "Working Capital"
+        },
+        {
+          "q": "What financial technique determines the sales level at which total revenue equals total cost?",
+          "a": "Break-Even Analysis"
+        },
+        {
+          "q": "What does NPV stand for in capital budgeting?",
+          "a": "Net Present Value"
+        },
+        {
+          "q": "What does IRR stand for?",
+          "a": "Internal Rate of Return"
+        },
+        {
+          "q": "What does EPS stand for?",
+          "a": "Earnings Per Share"
+        },
+        {
+          "q": "What does EBITDA stand for?",
+          "a": "Earnings Before Interest, Taxes, Depreciation and Amortization"
+        },
+        {
+          "q": "What does CAGR stand for?",
+          "a": "Compound Annual Growth Rate"
+        },
+        {
+          "q": "What is the central bank of India?",
+          "a": "Reserve Bank of India (RBI)"
+        },
+        {
+          "q": "What is the interest rate at which the RBI lends short-term funds to commercial banks against eligible securities?",
+          "a": "Repo Rate"
+        },
+        {
+          "q": "What does CRR stand for?",
+          "a": "Cash Reserve Ratio"
+        },
+        {
+          "q": "What does SLR stand for?",
+          "a": "Statutory Liquidity Ratio"
+        },
+        {
+          "q": "What does IPO stand for?",
+          "a": "Initial Public Offering"
+        },
+        {
+          "q": "What is a Demat account used for?",
+          "a": "Holding securities in electronic form"
+        },
+        {
+          "q": "Which two central depositories maintain electronic records of securities in India?",
+          "a": "NSDL and CDSL"
+        },
+        {
+          "q": "What does SEBI stand for?",
+          "a": "Securities and Exchange Board of India"
+        },
+        {
+          "q": "What is the total market value of a company's outstanding shares called?",
+          "a": "Market Capitalization"
+        },
+        {
+          "q": "What is the practice of selling borrowed shares with the expectation of buying them back at a lower price called?",
+          "a": "Short Selling"
         }
       ]
     },
     {
       "id": "companies",
       "name": "Famous Companies — Founders & Origins",
+      "syllabus_topic": "Business General Knowledge & Current Affairs",
       "questions": [
         {
           "q": "Which textile trader founded Reliance in 1958, pioneering equity equity culture among Indian retail investors with legendary AGM meetings?",
@@ -621,12 +745,53 @@
         {
           "q": "Which American business pioneer opened the first Walmart discount store in Rogers, Arkansas in 1962, focusing on everyday low prices?",
           "a": "Sam Walton"
+        },
+        {
+          "q": "Who founded Microsoft?",
+          "a": "Bill Gates and Paul Allen"
+        },
+        {
+          "q": "Who founded Amazon?",
+          "a": "Jeff Bezos"
+        },
+        {
+          "q": "Who co-founded Apple with Steve Jobs?",
+          "a": "Steve Wozniak"
+        },
+        {
+          "q": "Who founded Tesla?",
+          "a": "Tesla was founded by Martin Eberhard and Marc Tarpenning, with Elon Musk joining later as an early investor and chairman"
+        },
+        {
+          "q": "Who founded Facebook, now known as Meta?",
+          "a": "Mark Zuckerberg"
+        },
+        {
+          "q": "Who founded the Virgin Group?",
+          "a": "Richard Branson"
+        },
+        {
+          "q": "Who founded Alibaba?",
+          "a": "Jack Ma"
+        },
+        {
+          "q": "Who founded Infosys along with its co-founders?",
+          "a": "N. R. Narayana Murthy and his co-founders"
+        },
+        {
+          "q": "Who founded Biocon?",
+          "a": "Kiran Mazumdar-Shaw"
+        },
+        {
+          "q": "Who is associated with Berkshire Hathaway as its legendary chairman and CEO?",
+          "a": "Warren Buffett"
         }
       ]
     },
     {
       "id": "taglines",
       "name": "Taglines & Brand Logos",
+      "syllabus_topic": "Marketing Management",
       "questions": [
         {
           "q": "Which global sportswear titan has used the iconic advertising slogan 'Just Do It' since 1988?",
@@ -747,12 +912,45 @@
         {
           "q": "Which German luxury car brand created the famous engineering slogan 'Vorsprung durch Technik' (Advancement through Technology)?",
           "a": "Audi"
+        },
+        {
+          "q": "Which company uses the slogan 'Just Do It'?",
+          "a": "Nike"
+        },
+        {
+          "q": "Which company is associated with the slogan 'I'm Lovin' It'?",
+          "a": "McDonald's"
+        },
+        {
+          "q": "Which brand is known for the tagline 'Think Different'?",
+          "a": "Apple"
+        },
+        {
+          "q": "Which company uses the slogan 'Because You're Worth It'?",
+          "a": "L'Oréal"
+        },
+        {
+          "q": "What is the visual symbol representing a brand called?",
+          "a": "Logo"
+        },
+        {
+          "q": "What is the short memorable phrase associated with a brand called?",
+          "a": "Tagline / Slogan"
+        },
+        {
+          "q": "What is the use of a famous personality to promote a product called?",
+          "a": "Celebrity Endorsement"
+        },
+        {
+          "q": "What is the process of creating a unique identity for a company or product called?",
+          "a": "Branding"
         }
       ]
     },
     {
       "id": "leaders",
       "name": "Business Personalities & Leaders",
+      "syllabus_topic": "General Management",
       "questions": [
         {
           "q": "Which business magnate led the rollout of Jio 4G and 5G in India, investing over $40 billion to democratize low-cost mobile internet?",
@@ -879,6 +1077,7 @@
     {
       "id": "management",
       "name": "Management Concepts & Theories",
+      "syllabus_topic": "General Management",
       "questions": [
         {
           "q": "What modern goal-setting framework popularized by Intel and Google establishes ambitious Objectives linked with measurable Key Results?",
@@ -979,12 +1178,117 @@
         {
           "q": "What corporate concept describes the unique collective values, symbols, practices, and behavioral norms that define how an enterprise operates?",
           "a": "Organizational Culture (Corporate Culture)"
+        },
+        {
+          "q": "What are the four basic functions of management?",
+          "a": "Planning, Organizing, Leading, and Controlling"
+        },
+        {
+          "q": "Who is known as the father of scientific management?",
+          "a": "Frederick Winslow Taylor"
+        },
+        {
+          "q": "Who developed the 14 principles of management?",
+          "a": "Henri Fayol"
+        },
+        {
+          "q": "What management function involves setting objectives and deciding how to achieve them?",
+          "a": "Planning"
+        },
+        {
+          "q": "What is the process of assigning tasks and arranging resources to achieve organizational goals called?",
+          "a": "Organizing"
+        },
+        {
+          "q": "What is the process of assigning authority and responsibility to subordinates called?",
+          "a": "Delegation"
+        },
+        {
+          "q": "What does span of control refer to?",
+          "a": "The number of subordinates directly supervised by a manager"
+        },
+        {
+          "q": "What principle states that an employee should receive orders from only one superior?",
+          "a": "Unity of Command"
+        },
+        {
+          "q": "What is Management by Objectives commonly abbreviated as?",
+          "a": "MBO"
+        },
+        {
+          "q": "Which management function compares actual performance with planned performance?",
+          "a": "Controlling"
+        },
+        {
+          "q": "Which theory assumes that employees naturally dislike work and need close supervision?",
+          "a": "Theory X"
+        },
+        {
+          "q": "Which theory assumes that employees can be self-motivated and seek responsibility?",
+          "a": "Theory Y"
+        },
+        {
+          "q": "What leadership style involves employees participating in decision-making?",
+          "a": "Democratic / Participative Leadership"
+        },
+        {
+          "q": "What leadership style involves centralized decision-making by the leader?",
+          "a": "Autocratic Leadership"
+        },
+        {
+          "q": "What is the shared set of values, beliefs and practices within an organization called?",
+          "a": "Organizational Culture"
+        },
+        {
+          "q": "What is the process of resolving disagreements between individuals or groups called?",
+          "a": "Conflict Management"
+        },
+        {
+          "q": "What phenomenon suggests that employees may improve their performance when they know they are being observed?",
+          "a": "Hawthorne Effect"
+        },
+        {
+          "q": "What term describes a workplace where employees feel safe to express ideas and concerns without fear of humiliation?",
+          "a": "Psychological Safety"
+        },
+        {
+          "q": "What does JIT stand for in inventory management?",
+          "a": "Just-in-Time"
+        },
+        {
+          "q": "Which Japanese philosophy focuses on continuous improvement?",
+          "a": "Kaizen"
+        },
+        {
+          "q": "What quality management methodology aims to minimize defects and variation?",
+          "a": "Six Sigma"
+        },
+        {
+          "q": "What does DMAIC stand for?",
+          "a": "Define, Measure, Analyze, Improve and Control"
+        },
+        {
+          "q": "What is the management of the flow of goods, information and resources from suppliers to customers called?",
+          "a": "Supply Chain Management"
+        },
+        {
+          "q": "What is the process of transporting and storing goods from suppliers to customers called?",
+          "a": "Logistics"
+        },
+        {
+          "q": "What inventory system assumes that the oldest inventory is sold first?",
+          "a": "FIFO"
+        },
+        {
+          "q": "What inventory system assumes that the newest inventory is sold first?",
+          "a": "LIFO"
         }
       ]
     },
     {
       "id": "india",
       "name": "India — Business, Economy & Institutions",
+      "syllabus_topic": "Business General Knowledge & Current Affairs",
       "questions": [
         {
           "q": "In which city in Gujarat is Tata Electronics establishing India's first commercial $11 Billion semiconductor chip fabrication facility?",
@@ -1165,12 +1469,53 @@
         {
           "q": "Which Indian logistics tech unicorn provides automated express parcel shipping and third-party fulfillment for major e-commerce platforms?",
           "a": "Delhivery"
+        },
+        {
+          "q": "What does GDP stand for?",
+          "a": "Gross Domestic Product"
+        },
+        {
+          "q": "What economic condition refers to a sustained increase in the general price level of goods and services?",
+          "a": "Inflation"
+        },
+        {
+          "q": "What does GST stand for?",
+          "a": "Goods and Services Tax"
+        },
+        {
+          "q": "Which organization regulates the securities market in India?",
+          "a": "SEBI"
+        },
+        {
+          "q": "What is GIFT City?",
+          "a": "Gujarat International Finance Tec-City"
+        },
+        {
+          "q": "Where is GIFT City located?",
+          "a": "Gandhinagar, Gujarat"
+        },
+        {
+          "q": "Which authority regulates financial services in India's International Financial Services Centres?",
+          "a": "IFSCA"
+        },
+        {
+          "q": "What does MSME stand for?",
+          "a": "Micro, Small and Medium Enterprises"
+        },
+        {
+          "q": "What does FDI stand for?",
+          "a": "Foreign Direct Investment"
+        },
+        {
+          "q": "What does PLI stand for in India's industrial policy?",
+          "a": "Production Linked Incentive"
         }
       ]
     },
     {
       "id": "gdp",
       "name": "World Economics & Global Trade",
+      "syllabus_topic": "World Economics & Global Trade",
       "questions": [
         {
           "q": "Which country boasts the world's largest economy with a Nominal Gross Domestic Product exceeding $28 Trillion?",
@@ -1351,12 +1696,45 @@
         {
           "q": "What foundational economic metaphor describes how free-market competition channels individual self-interested pursuits into overall societal economic benefits?",
           "a": "The Invisible Hand"
+        },
+        {
+          "q": "What does IMF stand for?",
+          "a": "International Monetary Fund"
+        },
+        {
+          "q": "What does WTO stand for?",
+          "a": "World Trade Organization"
+        },
+        {
+          "q": "What does World Bank primarily provide to developing countries?",
+          "a": "Financial assistance and development support"
+        },
+        {
+          "q": "What does BRICS originally represent?",
+          "a": "Brazil, Russia, India, China and South Africa"
+        },
+        {
+          "q": "What is the exchange rate between two currencies called?",
+          "a": "Foreign Exchange Rate"
+        },
+        {
+          "q": "What is globalization in business?",
+          "a": "The increasing integration of economies, markets and businesses across countries"
+        },
+        {
+          "q": "What is the balance of a country's exports minus its imports called?",
+          "a": "Trade Balance"
+        },
+        {
+          "q": "What is a general and sustained decline in the prices of goods and services called?",
+          "a": "Deflation"
         }
       ]
     },
     {
       "id": "accounting",
       "name": "Accounting Basics",
+      "syllabus_topic": "Accounting & Financial Management",
       "questions": [
         {
           "q": "What fundamental mathematical equation forms the bedrock of the corporate Balance Sheet?",
@@ -1457,12 +1835,53 @@
         {
           "q": "What independent examination of a corporation's books by certified statutory auditors ensures financial statements present a true and fair view?",
           "a": "Statutory Financial Audit"
+        },
+        {
+          "q": "What is the systematic recording, classifying and summarizing of financial transactions called?",
+          "a": "Accounting"
+        },
+        {
+          "q": "What fundamental bookkeeping system records every transaction with equal debit and credit entries?",
+          "a": "Double-Entry Bookkeeping"
+        },
+        {
+          "q": "What statement shows a company's assets, liabilities and equity at a particular date?",
+          "a": "Balance Sheet"
+        },
+        {
+          "q": "What statement reports a company's revenues and expenses over a specific period?",
+          "a": "Income Statement / Profit and Loss Account"
+        },
+        {
+          "q": "What accounting principle requires expenses to be recognized in the same period as the revenues they help generate?",
+          "a": "Matching Principle"
+        },
+        {
+          "q": "Under which accounting concept are revenues and expenses recorded when they are earned or incurred rather than when cash is received or paid?",
+          "a": "Accrual Concept"
+        },
+        {
+          "q": "What is the statement prepared to check the arithmetical accuracy of ledger accounts called?",
+          "a": "Trial Balance"
+        },
+        {
+          "q": "What are amounts owed to a business by customers called?",
+          "a": "Accounts Receivable / Trade Debtors"
+        },
+        {
+          "q": "What are amounts owed by a business to its suppliers called?",
+          "a": "Accounts Payable / Trade Creditors"
+        },
+        {
+          "q": "What intangible asset arises when a company acquires another company for more than the fair value of its net identifiable assets?",
+          "a": "Goodwill"
         }
       ]
     },
     {
       "id": "howbusiness",
       "name": "How Business Works & Corporate Strategy",
+      "syllabus_topic": "General Management",
       "questions": [
         {
           "q": "Why do venture-backed technology startups list on stock exchanges via an Initial Public Offering (IPO)?",
@@ -1563,12 +1982,85 @@
         {
           "q": "What is the primary operational trade-off for electric two-wheeler delivery fleets between battery swapping and fixed plug-in charging?",
           "a": "Battery swapping eliminates vehicle charging downtime in minutes but requires heavy initial capital investment in standardized batteries"
+        },
+        {
+          "q": "What is starting and operating a business using the founder's own funds and revenues called?",
+          "a": "Bootstrapping"
+        },
+        {
+          "q": "What is an individual who invests personal money in an early-stage startup called?",
+          "a": "Angel Investor"
+        },
+        {
+          "q": "What does VC stand for?",
+          "a": "Venture Capital"
+        },
+        {
+          "q": "What does a startup's burn rate measure?",
+          "a": "The rate at which a startup spends its cash"
+        },
+        {
+          "q": "What is startup runway?",
+          "a": "The amount of time a startup can operate before running out of cash"
+        },
+        {
+          "q": "What document shows the ownership distribution among founders and investors in a startup?",
+          "a": "Cap Table"
+        },
+        {
+          "q": "Who co-founded Zerodha with Nikhil Kamath?",
+          "a": "Nithin Kamath"
+        },
+        {
+          "q": "Who founded Nykaa?",
+          "a": "Falguni Nayar"
+        },
+        {
+          "q": "Who co-founded Zepto?",
+          "a": "Aadit Palicha and Kaivalya Vohra"
+        },
+        {
+          "q": "What is a privately held startup valued at $1 billion or more commonly called?",
+          "a": "Unicorn"
+        },
+        {
+          "q": "What does SWOT stand for?",
+          "a": "Strengths, Weaknesses, Opportunities and Threats"
+        },
+        {
+          "q": "What framework analyzes Political, Economic, Social, Technological, Environmental and Legal factors?",
+          "a": "PESTLE Analysis"
+        },
+        {
+          "q": "Who developed Porter's Five Forces framework?",
+          "a": "Michael Porter"
+        },
+        {
+          "q": "How many forces are included in Porter's Five Forces model?",
+          "a": "Five"
+        },
+        {
+          "q": "What strategy aims to compete by becoming the lowest-cost producer in an industry?",
+          "a": "Cost Leadership"
+        },
+        {
+          "q": "What is the ability of a company to maintain an advantage over competitors called?",
+          "a": "Competitive Advantage"
+        },
+        {
+          "q": "What is expanding into unrelated industries called?",
+          "a": "Conglomerate Diversification"
+        },
+        {
+          "q": "What strategic tool evaluates financial, customer, internal process and learning perspectives?",
+          "a": "Balanced Scorecard"
         }
       ]
     },
     {
       "id": "bizgk",
       "name": "General Knowledge of Business & Industry",
+      "syllabus_topic": "Business General Knowledge & Current Affairs",
       "questions": [
         {
           "q": "Which global automobile giant executed India's largest-ever IPO in October 2024, raising ₹27,870 crore on Indian stock exchanges?",
@@ -1749,6 +2241,253 @@
         {
           "q": "What Indian sovereign gold investment program stopped issuing fresh tranches in 2024 as gold import duties were reduced in the Union Budget?",
           "a": "Sovereign Gold Bond (SGB) Scheme"
+        },
+        {
+          "q": "Which company became the first publicly traded company to reach a $3 trillion market capitalization?",
+          "a": "Apple"
+        },
+        {
+          "q": "Which company is associated with the Windows operating system and Azure cloud platform?",
+          "a": "Microsoft"
+        },
+        {
+          "q": "Which company developed the H100 and Blackwell series of AI GPUs?",
+          "a": "NVIDIA"
+        },
+        {
+          "q": "Which Indian company owns brands such as Tata Motors, Tata Consultancy Services and Tata Consumer Products?",
+          "a": "Tata Group"
+        },
+        {
+          "q": "Which Indian company operates the digital payments platform PhonePe?",
+          "a": "PhonePe"
+        },
+        {
+          "q": "Which Indian food-delivery company acquired Blinkit?",
+          "a": "Zomato"
+        },
+        {
+          "q": "Which Indian company is associated with the quick-commerce platform Zepto?",
+          "a": "Zepto"
+        },
+        {
+          "q": "Which company acquired Jaguar Land Rover in 2008?",
+          "a": "Tata Motors"
+        },
+        {
+          "q": "Which Indian company merged its media business with Disney's India operations?",
+          "a": "Reliance Industries"
+        },
+        {
+          "q": "Which Indian airline placed an order for 500 Airbus aircraft in 2023?",
+          "a": "IndiGo"
+        }
+      ]
+    },
+    {
+      "id": "hr",
+      "name": "Human Resource Management",
+      "syllabus_topic": "Human Resource Management",
+      "questions": [
+        {
+          "q": "What core HR function encompasses attracting, sourcing, and selecting suitable candidates to fill open organizational positions?",
+          "a": "Recruitment and Selection"
+        },
+        {
+          "q": "What formal HR process orients and integrates a newly hired employee into an organization's culture, tools, and role expectations?",
+          "a": "Onboarding (Induction)"
+        },
+        {
+          "q": "What structured HR document outlines the duties, responsibilities, required skills, and reporting lines for a specific role?",
+          "a": "Job Description (JD)"
+        },
+        {
+          "q": "What systematic HR process reviews and evaluates an employee's job performance and productivity over a defined review period?",
+          "a": "Performance Appraisal"
+        },
+        {
+          "q": "What modern continuous feedback mechanism gathers performance input on an employee from managers, peers, subordinates, and self-assessment simultaneously?",
+          "a": "360-Degree Feedback"
+        },
+        {
+          "q": "What HR metric measures the percentage of employees who voluntarily or involuntarily leave an organization over a given period?",
+          "a": "Attrition Rate (Employee Turnover Rate)"
+        },
+        {
+          "q": "What HR discipline focuses on structured programs that build employee skills and capabilities to improve current and future job performance?",
+          "a": "Training and Development (L&D)"
+        },
+        {
+          "q": "What long-term HR process identifies and develops internal candidates to fill future critical and leadership vacancies?",
+          "a": "Succession Planning"
+        },
+        {
+          "q": "What total rewards package includes an employee's base salary, bonuses, allowances, and non-cash perks like insurance and stock options?",
+          "a": "Compensation and Benefits (C&B)"
+        },
+        {
+          "q": "What structured HR technique systematically studies a job's tasks, duties, and required skills to define the job's scope and requirements?",
+          "a": "Job Analysis"
+        },
+        {
+          "q": "What voluntary employee benefit allows staff to convert accumulated stock options into actual company shares at a predetermined exercise price?",
+          "a": "Employee Stock Ownership Plan (ESOP)"
+        },
+        {
+          "q": "What HR metric measures the overall emotional commitment and enthusiasm an employee feels toward their organization and its goals?",
+          "a": "Employee Engagement"
+        },
+        {
+          "q": "What broad HR concept encompasses everything an employee experiences from job application through exit, shaping their perception of the organization?",
+          "a": "Employee Experience (EX)"
+        },
+        {
+          "q": "What term describes an organization's reputation and attractiveness as a workplace of choice among current staff and prospective job candidates?",
+          "a": "Employer Branding"
+        },
+        {
+          "q": "What formal legal process involves permanently terminating an employee's contract due to persistent underperformance or serious workplace misconduct?",
+          "a": "Termination (Dismissal)"
+        },
+        {
+          "q": "What voluntary workforce reduction HR program offers employees financial incentives to resign early, typically to cut costs without forced layoffs?",
+          "a": "Voluntary Retirement Scheme (VRS)"
+        },
+        {
+          "q": "What structured HR document formally records a conversation addressing an employee's performance or conduct issue, often preceding termination?",
+          "a": "Performance Improvement Plan (PIP)"
+        },
+        {
+          "q": "What organized process ensures a departing employee's responsibilities, access, and knowledge are properly transferred and formally closed out?",
+          "a": "Exit Interview / Offboarding"
+        },
+        {
+          "q": "What core HR planning process forecasts an organization's future staffing needs and develops strategies to meet them?",
+          "a": "Human Resource Planning (HRP / Workforce Planning)"
+        },
+        {
+          "q": "What integrated digital platform automates and centralizes core HR processes like payroll, attendance, leave, and employee records?",
+          "a": "Human Resource Information System (HRIS / HRMS)"
+        },
+        {
+          "q": "What compensation strategy determines pay levels for roles by comparing them against external market salary data for similar positions?",
+          "a": "Benchmarking (Salary Benchmarking)"
+        },
+        {
+          "q": "What organizational strategy actively promotes hiring and workplace inclusion of people across different genders, ethnicities, abilities, and backgrounds?",
+          "a": "Diversity, Equity, and Inclusion (DEI)"
+        },
+        {
+          "q": "What Indian labour welfare fund requires employers and employees to jointly contribute a fixed percentage of basic salary toward a retirement corpus?",
+          "a": "Employees' Provident Fund (EPF)"
+        },
+        {
+          "q": "What Indian statutory social security scheme, regulated by the ESIC, provides medical and cash benefits to low-wage employees during illness or injury?",
+          "a": "Employees' State Insurance (ESI)"
+        },
+        {
+          "q": "What Indian statutory lump-sum retirement benefit is paid by an employer to an employee who completes at least five continuous years of service?",
+          "a": "Gratuity"
+        },
+        {
+          "q": "What Indian labour law legally mandates specific paid maternity leave duration and benefits for women employees in the organized sector?",
+          "a": "Maternity Benefit Act, 1961"
+        },
+        {
+          "q": "What comprehensive Indian labour law consolidates 29 existing central labour laws into four unified codes covering wages, safety, and social security?",
+          "a": "The Labour Codes (Code on Wages, Industrial Relations, Social Security, and OSH Codes)"
+        },
+        {
+          "q": "What flexible work arrangement HR trend allows employees to choose their own working hours within agreed limits rather than fixed shift timings?",
+          "a": "Flexi-Time (Flexible Working Hours)"
+        },
+        {
+          "q": "What HR term describes an organization's structured framework for identifying, nurturing, and retaining employees with high leadership potential?",
+          "a": "Talent Management"
+        },
+        {
+          "q": "What recruitment approach mobilizes existing employees to refer suitable candidates from their personal and professional networks for open roles?",
+          "a": "Employee Referral Program"
+        },
+        {
+          "q": "What structured negotiation process between employer representatives and a recognized trade union determines wages, hours, and working conditions?",
+          "a": "Collective Bargaining"
+        },
+        {
+          "q": "What formal Indian statutory forum resolves disputes between employers and workmen over dismissal, wages, or working conditions?",
+          "a": "Labour Court / Industrial Tribunal"
+        },
+        {
+          "q": "What HR compliance policy legally mandates every organization to establish an Internal Complaints Committee (ICC) against workplace sexual harassment?",
+          "a": "POSH Act, 2013 (Prevention of Sexual Harassment)"
+        },
+        {
+          "q": "What compensation approach ties a variable portion of employee pay directly to individual, team, or company performance outcomes?",
+          "a": "Pay-for-Performance (Variable Pay)"
+        },
+        {
+          "q": "What HR workforce metric divides total revenue or profit generated by the total number of full-time employees to measure productivity?",
+          "a": "Revenue per Employee"
+        },
+        {
+          "q": "What contemporary HR trend refers to employees secretly working two full-time remote jobs simultaneously without either employer's knowledge?",
+          "a": "Overemployment (Moonlighting)"
+        },
+        {
+          "q": "What global workplace trend describes employees deliberately doing only the minimum required tasks and disengaging from going 'above and beyond'?",
+          "a": "Quiet Quitting"
+        },
+        {
+          "q": "What HR analytics discipline applies statistical and data-driven methods to workforce data to guide hiring, retention, and performance decisions?",
+          "a": "People Analytics (HR Analytics)"
+        },
+        {
+          "q": "What formal HR mechanism allows employees to raise workplace concerns or complaints through a structured, confidential escalation process?",
+          "a": "Grievance Redressal Mechanism"
+        },
+        {
+          "q": "What compensation planning process evaluates and ranks jobs within an organization based on their relative worth to determine internal pay equity?",
+          "a": "Job Evaluation"
+        },
+        {
+          "q": "What is the process of finding and attracting potential employees for a job called?",
+          "a": "Recruitment"
+        },
+        {
+          "q": "What is the process of choosing the most suitable candidate from applicants called?",
+          "a": "Selection"
+        },
+        {
+          "q": "What is the process of improving employees' knowledge and skills for their jobs called?",
+          "a": "Training and Development"
+        },
+        {
+          "q": "What is the process of introducing a new employee to the organization and its work environment called?",
+          "a": "Onboarding"
+        },
+        {
+          "q": "What is the systematic evaluation of an employee's performance called?",
+          "a": "Performance Appraisal"
+        },
+        {
+          "q": "Who developed the Hierarchy of Needs theory?",
+          "a": "Abraham Maslow"
+        },
+        {
+          "q": "Which theory divides workplace factors into hygiene factors and motivators?",
+          "a": "Herzberg's Two-Factor Theory"
+        },
+        {
+          "q": "What term describes an employee's emotional commitment and involvement in an organization?",
+          "a": "Employee Engagement"
+        },
+        {
+          "q": "What is the process of preparing employees to take over key positions in the future called?",
+          "a": "Succession Planning"
+        },
+        {
+          "q": "What is the rate at which employees leave an organization called?",
+          "a": "Employee Turnover / Attrition"
         }
       ]
     }

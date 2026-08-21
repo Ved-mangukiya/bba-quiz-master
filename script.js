@@ -210,11 +210,12 @@
       accounting: "Statements & Entries",
       howbusiness: "Integration & Strategy",
       bizgk: "M&A, Tech & Milestones",
+      hr: "Recruitment, POSH & Labour",
     };
     return map[id] || "Subject Drill";
   }
 
-  function buildTicker(totalQuestions = 420) {
+  function buildTicker(totalQuestions = 600) {
     const ticker = el("ticker");
     if (!ticker || !DATA || !DATA.categories) return;
 
